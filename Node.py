@@ -69,14 +69,18 @@ class Node:
                     Q.append((x,a))
     
     def FC(self, I):
+        #print("FC")
         x = self.father_var
-        a = self.Domains[x][0]
-        for y in range(x):
-            if I.Cons_ID[x][y] != -1:
-                c_id = I.Cons_ID[x][y]
-                for b in self.Domains[y]:
-                    if not I.Cons_Tuple[c_id][a][b]:
-                        self.Domains[y].remove(b)
+        if len(self.Domains[x]) == 1:
+            #print ("on est dans le if")
+            #print(self.Domains[x])
+            a = self.Domains[x][0]
+            for y in range(x):
+                if I.Cons_ID[x][y] != -1:
+                    c_id = I.Cons_ID[x][y]
+                    for b in self.Domains[y]:
+                        if not I.Cons_Tuple[c_id][a][b]:
+                            self.Domains[y].remove(b)
     
     def get_ID(self):
         return self.ID
