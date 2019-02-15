@@ -96,7 +96,7 @@ def main(I,branching_strat,var_strat,search_strat,look_ahead_strat):
 # *** Résolution & tests ***
 
 t1 = time()
-I = create_Reines_instance(8)
+I = create_Reines_instance(4)
 I.compute_useful_objects()
 t2 = time()
 branching_strat = 1 # style de branchement

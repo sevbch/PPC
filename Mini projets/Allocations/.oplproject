@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?><project>
+	<version>1.0</version>
+	<configs>
+		<config default="true" name="Boucle avec main" category="opl">
+			<ref name="Allocations.ops" type="setting">
+			</ref>
+			<ref name="Allocations.dat" type="data">
+			</ref>
+			<ref name="Allocations_Boucle.mod" type="model">
+			</ref>
+		</config>
+		<config default="false" name="Minimize" category="opl">
+			<ref name="Allocations.ops" type="setting">
+			</ref>
+			<ref name="Allocations.dat" type="data">
+			</ref>
+			<ref name="Minimize.mod" type="model">
+			</ref>
+		</config>
+		<config default="false" name="10 solutions" category="opl">
+			<ref name="10 solutions.mod" type="model">
+			</ref>
+			<ref name="Allocations.ops" type="setting">
+			</ref>
+			<ref name="Allocations.dat" type="data">
+			</ref>
+		</config>
+	</configs>
+	
+</project>
