@@ -7,7 +7,7 @@ Created on Sat Feb 09 16:51:15 2019
 
 from Instance import Instance
 
-def create_Reines_instance(n):
+def create_Queens_instance(n):
     var_domains = [list(range(n)) for i in range(n)]
     constraints_list = []
     for x in range(n):

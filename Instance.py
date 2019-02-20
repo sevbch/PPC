@@ -5,6 +5,7 @@ Created on Tue Feb 05 11:00:17 2019
 @author: Guillaume
 """
 
+
 class Instance:
     
     def __init__(self,nbr_var,var_domains,constraints_list):
