@@ -155,7 +155,7 @@ class Node:
             for val in self.Domains[var]:
                 ID_branch = self.get_ID() + str(k)
                 D_branch = self.copy_domains()
-                D_branch[var].clear()
+                D_branch[var]=[]
                 D_branch[var].append(val)
                 self.branch.append(Node(ID_branch,D_branch))
                 self.branch[k].father_var = var
