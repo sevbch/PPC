@@ -46,10 +46,10 @@ class Node:
         # initialisation
         Q = []
         S = [[[] for d in range(I.d_max+1)] for y in range(I.N)]
-        Count = [[[0 for d in range(I.d_max+1)] for y in range(I.N)] for x in range(I.N)]
+        Count = [[[0 for d in range(I.d_max+1)] for y in range(x)] for x in range(I.N)]
         for x in range(I.N):
             for y in range(x):
-                if I.Cons_ID[x][y] != -1:
+                if I.Cons_ID[x][y] != -1: # une contrainte lie x et y
                     c_id = I.Cons_ID[x][y]
                     for a in self.Domains[x]:
                         for b in self.Domains[y]:
@@ -64,7 +64,7 @@ class Node:
             (y,b) = Q.pop()
             for (x,a) in S[y][b]:
                 Count[x][y][a] -= 1
-                if Count[x][y][a] == 0 and a in self.Domains[x]:
+                if ((Count[x][y][a] == 0) and (a in self.Domains[x])):
                     self.Domains[x].remove(a)
                     Q.append((x,a))
     

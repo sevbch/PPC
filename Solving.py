@@ -8,11 +8,15 @@ Created on Wed Feb 20 22:10:45 2019
 from Node import Node
 from copy import copy
 
+
+
 def copy_domains(D):
     new_D = []
     for d in D:
         new_D.append(copy(d))
     return new_D
+
+
 
 def choose_node(nodes_list,search_strat):
     if search_strat == 0:
@@ -24,10 +28,17 @@ def choose_node(nodes_list,search_strat):
     else:
         print("cette stratégie n'existe pas")
         return []
+
+
     
 def print_sol(solution,I):
+    m = 0
     for x in range(I.N):
+        if solution.Domains[x][0] > m:
+            m = solution.Domains[x][0]
         print("Variable "+str(x)+" affectée à la valeur "+str(solution.Domains[x][0])+"\n")
+    print("\n"+"Nombre de valeurs utilisées : "+str(m)+"\n")
+        
 
 
 def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):

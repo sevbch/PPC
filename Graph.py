@@ -54,7 +54,7 @@ def get_graph(filename):
 
 def create_graph_instance(filename):
     g = get_graph(filename)
-    var_domains = [list(range(g.deg_max + 1)) for i in range(g.n)]
+    var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
     constraints_list = []
     for e in g.edges:
         tuple_list = []
