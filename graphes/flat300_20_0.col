@@ -1,0 +1,54 @@
+c File: flat300_20_0.col
+c
+c SOURCE: Joseph Culberson (joe@cs.ualberta.ca)
+c DESCRIPTION: Quasi-random coloring problem
+c              generated with flatness = 0
+c                             probability = 0.500
+c                             known coloring = 20
+c                             random seed = 871009181
+c              Creation Date:  Mon Sep 19 08:15:40 1994
+c Maximum degree = 160 Minimum degree = 127
+c COLOR VERIFICATION: Using the permuted order
+c under simple greedy yields the specified
+c coloring number
+c Color = 20 specified partitions = 20
+p edge 300 21375
+e 2 1
+e 3 1
+e 4 1
+e 4 2
+e 4 3
+e 5 1
+e 5 2
+e 5 3
+e 6 4
+e 7 1
+e 7 3
+e 7 4
+e 8 1
+e 8 3
+e 9 2
+e 9 3
+e 9 5
+e 9 7
+e 10 1
+e 10 3
+e 10 4
+e 10 9
+e 11 3
+e 11 5
+e 11 6
+e 11 8
+e 11 9
+e 12 1
+e 12 3
+e 12 4
+e 12 6
+e 12 7
+e 12 8
+e 12 9
+e 13 1
+e 13 6
+e 13 10
+e 13 11
+e 13 12

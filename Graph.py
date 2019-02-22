@@ -26,7 +26,7 @@ def get_graph(filename):
             ch = line[0]
             if ch == 'c': # ligne de commentaire
                 continue;
-            elif ch == 'p' or ch == 'e':
+            elif ch == 'e' or ch == 'p':
                 l = []
                 for s in line.split(' '):
                     l.append(s)
