@@ -19,8 +19,9 @@ t1 = time()
 #I = create_queens_instance(4)
 
 # *** instance graphe
-filename = "./graphes/anna.col"
-I = create_graph_instance(filename)
+#filename = "./graphes/anna.col"
+#I = create_graph_instance(filename)
+I = create_queens_instance(60)
 
 I.compute_useful_objects()
 t2 = time()
@@ -50,9 +51,10 @@ search_strat = 1
 # 1 : en profondeur
 
 # *** stratégie look-ahead
-look_ahead_strat = 0
+look_ahead_strat = 2
 # 0 : maintain arc consistency
 # 1 : forward checking
+# 2 : FC+AC
 
 print("Temps de création : "+str(t2-t1))
 

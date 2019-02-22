@@ -7,6 +7,7 @@ Created on Wed Feb 20 22:10:45 2019
 
 from Node import Node
 from copy import copy
+import numpy as np
 
 
 
@@ -19,10 +20,10 @@ def copy_domains(D):
 
 
 def choose_node(nodes_list,search_strat):
-    if search_strat == 0:
+    if search_strat == 0: #en largeur
         node = nodes_list.pop(0)
         return node
-    elif search_strat == 1:
+    elif search_strat == 1: #en profondeur
         node = nodes_list.pop()
         return node
     else:
@@ -33,10 +34,13 @@ def choose_node(nodes_list,search_strat):
     
 def print_sol(solution,I):
     m = 0
+    tab=np.zeros((I.N,I.N))
     for x in range(I.N):
         if solution.Domains[x][0] > m:
             m = solution.Domains[x][0]
         print("Variable "+str(x)+" affectée à la valeur "+str(solution.Domains[x][0])+"\n")
+        #tab[x][solution.Domains[x][0]-1]=1
+    #print(tab)
     print("\n"+"Nombre de valeurs utilisées : "+str(m)+"\n")
         
 
@@ -48,24 +52,30 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
     found_feas = False
     nbr_nodes = 0
     nbr_fails = 0
+    count_FC=0
     #print(root_node.Domains)
     
     while nodes_list != [] and not found_feas:
         
         current_node = choose_node(nodes_list,search_strat)
         
+        
         #print("My ID",current_node.get_ID())
         
-        #print("My before after AC",current_node.Domains)
+        #print("My domain before AC",current_node.Domains)
         
         # *** stratégie look ahead ***
-        if look_ahead_strat == 0 or (look_ahead_strat == 1 and nbr_nodes == 0) :
+        if look_ahead_strat == 0:
             current_node.AC3(I)
         elif look_ahead_strat ==1:
-            if nbr_nodes > 0:
-                current_node.FC(I)
+            count_FC+=current_node.FC(I)
+        elif look_ahead_strat ==2:
+            count_FC+=current_node.FC(I)
+            current_node.AC3(I)
         
         #print("My domain after AC",current_node.Domains)
+        
+        #input()
         
         current_node.set_status()
         status = current_node.get_status()
@@ -94,6 +104,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         print_sol(solution,I)
         print("Il y a eu "+str(nbr_nodes)+" noeuds explorés\n")
         print("Il y a eu "+str(nbr_fails)+" échecs\n")
+        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
         return solution
     
     else:

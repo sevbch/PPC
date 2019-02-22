@@ -6,6 +6,9 @@ Created on Tue Feb 05 11:14:42 2019
 """
 from copy import copy
 
+def remove_values_from_list(the_list, val):
+   return [value for value in the_list if value != val]
+
 class Node:
     
     def __init__(self,ID,var_domains):
@@ -15,11 +18,47 @@ class Node:
         
     def revise(self,x,y,x_value,I):
         """Essaie de trouver y_value pour y tel que (x_value,y_value) soit faisable pour C(x,y)"""
-        c_id = I.Cons_ID[x][y]
-        for y_value in self.Domains[y]:
-            if I.Cons_Tuple[c_id][x_value][y_value]:
-                return True
-        return False
+        if x>y:
+            c_id = I.Cons_ID[x][y]
+            for y_value in self.Domains[y]:
+                if I.Cons_Tuple[c_id][x_value][y_value]:
+                    #print("La variable "+str(x)+" de valeur "+str(x_value) +" est ok\navec la variable "+str(y)+" de valeur "+str(y_value))
+                    return True
+            #print("La variable "+str(x)+" de valeur "+str(x_value) +" n'est pas ok\navec la variable "+str(y))
+            return False
+        else:
+            c_id = I.Cons_ID[y][x]
+            for y_value in self.Domains[y]:
+                if I.Cons_Tuple[c_id][y_value][x_value]:
+                    #print("La variable "+str(x)+" de valeur "+str(x_value) +" est ok\navec la variable "+str(y)+" de valeur "+str(y_value))
+                    return True
+            #print("La variable "+str(x)+" de valeur "+str(x_value) +" n'est pas ok\navec la variable "+str(y))
+            return False
+        
+    def AC1(self,I):
+        term=False
+        while not term:
+            term=True
+            for x in range(I.N):
+                for y in range(x):
+                    if I.Cons_ID[x][y] != -1:
+                        toPOP=[]
+                        for x_value in self.Domains[x]:  
+                            supported = self.revise(x,y,x_value,I)
+                            if not supported:
+                                toPOP.append(x_value)
+                                term=False
+                        for x_value in toPOP:
+                            self.Domains[x].remove(x_value)
+                        toPOP=[]
+                        for y_value in self.Domains[y]:  
+                            supported = self.revise(y,x,y_value,I)
+                            if not supported:
+                                toPOP.append(y_value)
+                                term=False
+                        for y_value in toPOP:
+                            self.Domains[y].remove(y_value)
+                        
         
     def AC3(self,I):
         aTester = [] #liste des paires à tester
@@ -27,38 +66,55 @@ class Node:
             for y in range(x):
                 if I.Cons_ID[x][y] != -1:
                     aTester.append((x,y))
-        #print("here",aTester)
+                    aTester.append((y,x))
         while aTester != []:
             (x,y) = aTester.pop()
-            #print(x,self.Domains[x])
+            removed=False
+            toPOP=[]
             for x_value in self.Domains[x]:    
                 supported = self.revise(x,y,x_value,I)
-                #print(supported)
                 if not supported:
-                    self.Domains[x].remove(x_value)
-                    for y2 in I.Uni[x]:
-                        if y2 < x:
-                            aTester.append((x,y2))
-                        else:
-                            aTester.append((y2,x))
+                    toPOP.append(x_value)
+                    removed=True
+            for x_value in toPOP:
+                self.Domains[x].remove(x_value)
+            #print(x,self.Domains[x])
+            if removed:
+                for y2 in I.Uni[x]:
+                    if y2!=y:
+                        aTester.append((y2,x))
     
     def AC4(self,I):
         # initialisation
         Q = []
         S = [[[] for d in range(I.d_max+1)] for y in range(I.N)]
-        Count = [[[0 for d in range(I.d_max+1)] for y in range(x)] for x in range(I.N)]
+        Count = [[[0 for d in range(I.d_max+1)] for y in range(I.N)] for x in range(I.N)]
         for x in range(I.N):
             for y in range(x):
                 if I.Cons_ID[x][y] != -1: # une contrainte lie x et y
                     c_id = I.Cons_ID[x][y]
+                    toPOP=[]
                     for a in self.Domains[x]:
                         for b in self.Domains[y]:
                             if I.Cons_Tuple[c_id][a][b]:
                                 Count[x][y][a] += 1
                                 S[y][b].append((x,a))
                         if Count[x][y][a] == 0:
-                            self.Domains[x].remove(a)
-                            Q.append((x,a))
+                            toPOP.append(a)
+                    for a in toPOP:
+                        self.Domains[x].remove(a)
+                        Q.append((x,a))
+                    toPOP=[]
+                    for a in self.Domains[y]:
+                        for b in self.Domains[x]:
+                            if I.Cons_Tuple[c_id][b][a]:
+                                Count[y][x][a] += 1
+                                S[x][b].append((y,a))
+                        if Count[y][x][a] == 0:
+                            toPOP.append(a)
+                    for a in toPOP:
+                        self.Domains[y].remove(a)
+                        Q.append((y,a))
         # AC4
         while Q != []:
             (y,b) = Q.pop()
@@ -69,18 +125,35 @@ class Node:
                     Q.append((x,a))
     
     def FC(self, I):
+        count=0
         #print("FC")
         x = self.father_var
         if len(self.Domains[x]) == 1:
             #print ("on est dans le if")
             #print(self.Domains[x])
             a = self.Domains[x][0]
-            for y in range(x):
-                if I.Cons_ID[x][y] != -1:
-                    c_id = I.Cons_ID[x][y]
-                    for b in self.Domains[y]:
-                        if not I.Cons_Tuple[c_id][a][b]:
+            for y in range(I.N):
+                if x>y:
+                    if I.Cons_ID[x][y] != -1:
+                        c_id = I.Cons_ID[x][y]
+                        toPOP=[]
+                        for b in self.Domains[y]:
+                            if not I.Cons_Tuple[c_id][a][b]:
+                                toPOP.append(b)
+                        for b in toPOP:
                             self.Domains[y].remove(b)
+                            count+=1
+                elif y<x:
+                    if I.Cons_ID[y][x] != -1:
+                        c_id = I.Cons_ID[y][x]
+                        toPOP=[]
+                        for b in self.Domains[y]:
+                            if not I.Cons_Tuple[c_id][b][a]:
+                                self.Domains[y].remove(b)
+                        for b in toPOP:
+                            self.Domains[y].remove(b)
+                            count+=1
+        return count
     
     def get_ID(self):
         return self.ID
