@@ -4,5 +4,6 @@
   <category name="cp">
     <setting name="logperiod" value="100000"/>
     <setting name="defaultinferencelevel" value="Extended"/>
+    <setting name="dynamicprobingstrength" value="0.5"/>
   </category>
 </settings>

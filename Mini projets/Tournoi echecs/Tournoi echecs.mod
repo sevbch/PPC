@@ -25,6 +25,7 @@ range Cases=0..(T*(N-1)-1);
  
  
  dvar int tab[Matchs] in Cases;
+ dvar int Factice[Joueurs] in Periodes;
     
 
  // Contraintes
@@ -72,10 +73,19 @@ range Cases=0..(T*(N-1)-1);
 	*/
 	forall(j in Joueurs){
 		forall(p in Periodes){
-			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi(tab[m] % T == p)<=2;		
+			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi((tab[m] % T) == p-1)<=2;		
 		}	
 	}		
 	
+	forall(j in Joueurs){
+		forall(p in Periodes){
+			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi(tab[m] % T == p-1)==2-ftoi(Factice[j]==p);		
+		}	
+	}
+	
+	forall(p in Periodes){
+		sum(j in Joueurs) ftoi(Factice[j]==p) == 2;	
+	}
 	
 	
 	
