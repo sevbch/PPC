@@ -4,7 +4,7 @@ Created on Tue Feb 05 11:00:17 2019
 
 @author: Guillaume
 """
-
+from copy import copy
 
 class Instance:
     
@@ -40,5 +40,11 @@ class Instance:
         self.Uni = Uni
         self.Cons_ID = Cons_ID
         self.Cons_Tuple = Cons_Tuple
+    
+    def copy_instance(self):
+        n = copy(self.N)
+        var_domains = copy(self.Domains)
+        constraints_list = copy(self.Constraints)
+        return Instance(n,var_domains,constraints_list)
             
             

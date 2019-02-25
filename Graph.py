@@ -45,7 +45,7 @@ def get_graph(filename):
                         elif deg[v] > deg_max:
                             deg_max = deg[v]
             else: # ligne vide = fin du fichier
-                break;
+                break
     f.closed
     g = Graph(n,deg_max,edges)
     return g
@@ -55,6 +55,7 @@ def get_graph(filename):
 def create_graph_instance(filename):
     g = get_graph(filename)
     var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
+#    var_domains = [list(reversed(range(1, 5))) for i in range(g.n)]
     constraints_list = []
     for e in g.edges:
         tuple_list = []
@@ -67,3 +68,4 @@ def create_graph_instance(filename):
         constraints_list.append((x,y,tuple_list))
     I = Instance(g.n,var_domains,constraints_list)
     return I
+
