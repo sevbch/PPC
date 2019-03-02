@@ -159,8 +159,16 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
                 
         
         nbr_nodes += 1
-        if nbr_nodes%10000==0:
+        if nbr_nodes%100000==0:
+            print("Progress report")
             print(nbr_nodes)
+            #print("Noeud le plus loin "+nodes_list[0].ID)
+            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
+            print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
+            print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+            print("Temps passé à brancher seulement : "+str(br_time))
+            print("Temps passé sur l'AC : "+str(ac_time))
+            print("Temps passé sur le FC : "+str(fc_time))
             
             
     if found_feas:
@@ -175,6 +183,12 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
     
     else:
         print("Le problème est infaisable\n")
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
+        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+        print("Temps passé à brancher seulement : "+str(br_time))
+        print("Temps passé sur l'AC : "+str(ac_time))
+        print("Temps passé sur le FC : "+str(fc_time))
         return [], 0
 
 

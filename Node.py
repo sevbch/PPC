@@ -166,45 +166,53 @@ class Node:
     
     def FC(self, I):
         count=0
-        x = self.father_var
-        if len(self.Domains[x]) == 1:
-            a = self.Domains[x][0]
+        if len(self.Domains[self.father_var]) == 1:
+            list_FC = [self.father_var]
             infeasible = False
-            y_idx=0
-            max_y_idx=len(I.Uni[x])
-            while not infeasible and y_idx < max_y_idx:
-                y=I.Uni[x][y_idx]
-                if x>y:
-                    c_id = I.Cons_ID[x][y]
-                    toPOP=[]
-                    for b in self.Domains[y]:
-                        if not I.Cons_Tuple[c_id][a][b]:
-                            toPOP.append(b)
-                    if toPOP!=[]:
-                        self.to_check.append(y)
-                    for b in toPOP:
-                        self.Domains[y].remove(b)
-                        count+=1
-                    if len(self.Domains[y]) == 0:
-                        self.status = -1
-                        infeasible = True
-                        break
-                else:
-                    c_id = I.Cons_ID[y][x]
-                    toPOP=[]
-                    for b in self.Domains[y]:
-                        if not I.Cons_Tuple[c_id][b][a]:
-                            toPOP.append(b)
-                    if toPOP!=[]:
-                        self.to_check.append(y)
-                    for b in toPOP:
-                        self.Domains[y].remove(b)
-                        count+=1
-                    if len(self.Domains[y]) == 0:
-                        self.status = -1
-                        infeasible = True
-                        break
-                y_idx += 1
+            while list_FC!=[] and not infeasible:
+                x=list_FC.pop()
+                a = self.Domains[x][0]
+                y_idx=0
+                max_y_idx=len(I.Uni[x])
+                while not infeasible and y_idx < max_y_idx:
+                    y=I.Uni[x][y_idx]
+                    if x>y:
+                        c_id = I.Cons_ID[x][y]
+                        toPOP=[]
+                        for b in self.Domains[y]:
+                            if not I.Cons_Tuple[c_id][a][b]:
+                                toPOP.append(b)
+                        if toPOP!=[]:
+                            self.to_check.append(y)
+                            for b in toPOP:
+                                self.Domains[y].remove(b)
+                                count+=1
+                            Dy=len(self.Domains[y])
+                            if Dy == 0:
+                                self.status = -1
+                                infeasible = True
+                                break
+                            elif Dy==1:
+                                list_FC.append(y)
+                    else:
+                        c_id = I.Cons_ID[y][x]
+                        toPOP=[]
+                        for b in self.Domains[y]:
+                            if not I.Cons_Tuple[c_id][b][a]:
+                                toPOP.append(b)
+                        if toPOP!=[]:
+                            self.to_check.append(y)
+                            for b in toPOP:
+                                self.Domains[y].remove(b)
+                                count+=1
+                            Dy=len(self.Domains[y])
+                            if Dy == 0:
+                                self.status = -1
+                                infeasible = True
+                                break
+                            elif Dy==1:
+                                list_FC.append(y)
+                    y_idx += 1
         return count
 
     

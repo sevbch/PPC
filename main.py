@@ -107,8 +107,9 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 
 # ****************** résolution ******************
 #filename = "./graphes/jean.col" # solution exacte : 10
-filename = "./graphes/myciel3.col" # solution exacte : 4
-#filename = "./graphes/myciel5.col" # solution exacte : 6
+#filename = "./graphes/myciel3.col" # solution exacte : 4
+#filename = "./graphes/myciel4.col" # solution exacte : 5
+filename = "./graphes/myciel5.col" # solution exacte : 6
 #filename = "./graphes/queen10_10.col" # solution exacte : 10
 #filename = "./graphes/miles1000.col" # solution exacte : 42
 #coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
@@ -117,16 +118,10 @@ filename = "./graphes/myciel3.col" # solution exacte : 4
 
 # vieille méthode pour checker
 t1 = time()
-I = create_graph_instance(filename,3)
-
+I = create_graph_instance(filename,5)
+print(I.N,I.M)
 if I!=[]:
     I.compute_useful_objects()
-    print(I.Constraints)
-    print(I.Cons_ID[8][4])
-    print(I.Cons_Tuple[I.Cons_ID[8][4]][3][3])
-    print(I.Uni[4])
-    print(I.Uni[8])
-    print(I.N,I.M)
     t2 = time()
     print("Temps de création : "+str(t2-t1))
     sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
