@@ -8,7 +8,7 @@ Created on Wed Feb 20 22:10:45 2019
 from Node import Node
 from copy import copy
 import numpy as np
-
+np.random.seed(0)
 
 
 def copy_domains(D):
@@ -19,13 +19,21 @@ def copy_domains(D):
 
 
 
-def choose_node(nodes_list,search_strat):
+def choose_node(nodes_list,search_strat,nchildren):
     if search_strat == 0: #en largeur
         node = nodes_list.pop(0)
         return node
     elif search_strat == 1: #en profondeur
         node = nodes_list.pop()
         return node
+    elif search_strat == 2: #aléatoire sur les derniers fils
+        if nchildren==0:
+            node = nodes_list.pop()
+            return node
+        else:
+            rdn=np.random.randint(0,nchildren)
+            node = nodes_list.pop(-rdn-1)
+            return node
     else:
         print("cette stratégie n'existe pas")
         return []
@@ -54,11 +62,14 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
     nbr_nodes = 0
     nbr_fails = 0
     count_FC = 0
+    nchildren=1
     #print(root_node.Domains)
     
     while nodes_list != [] and not found_feas:
         
-        current_node = choose_node(nodes_list,search_strat)
+        #print([node.ID for node in nodes_list])
+        current_node = choose_node(nodes_list,search_strat,nchildren)
+        #print(current_node.ID)
         
 #        print("itération "+str(nbr_nodes)+"\n")
         
@@ -97,6 +108,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         elif status == -1: # unfeasible
             nbr_fails += 1
             current_node = [] # libère la mémoire
+            nchildren=0
             if nbr_nodes == 0: # on est à la racine ==> infaisable
 #                print("on est ici")
                 break
@@ -104,17 +116,21 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         else:
             var_ID, var_value = current_node.find_branch(var_strat)
             current_node.branch(var_ID,var_value,branching_strat)
-            for k in range(len(current_node.branch)):
+            nchildren=len(current_node.branch)
+            for k in range(nchildren):
                 nodes_list.append(current_node.branch[k])
+            nchildren=len(current_node.branch)
                 
-            
+        
         nbr_nodes += 1
+        if nbr_nodes%10000==0:
+            print(nbr_nodes)
             
             
     if found_feas:
-        print_sol(solution,I)
-        print("Il y a eu "+str(nbr_nodes)+" noeuds explorés\n")
-        print("Il y a eu "+str(nbr_fails)+" échecs\n")
+        #print_sol(solution,I)
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
         print("Le FC a enlevé "+str(count_FC)+" fois des variables")
         return solution, nb_col(solution,I)
     

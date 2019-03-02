@@ -7,6 +7,8 @@ Created on Tue Feb 19 22:17:55 2019
 
 from Instance import Instance
 import io
+import networkx as nx
+from networkx.algorithms.approximation import max_clique
 
 
 
@@ -36,7 +38,7 @@ def get_graph(filename):
                 else:
                     u = int(l[1])-1
                     v = int(l[2][:-1])-1
-                    if u > v:
+                    if u < v:
                         edges.append((u,v))
                         deg[u] += 1
                         deg[v] += 1
@@ -52,15 +54,25 @@ def get_graph(filename):
 
 
 
-def create_graph_instance(filename):
+def create_graph_instance(filename, colours=None):
     g = get_graph(filename)
-    var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
-#    var_domains = [list(reversed(range(1, 5))) for i in range(g.n)]
+    if colours==None:
+        var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
+    else:
+        var_domains = [list(reversed(range(1, colours + 1))) for i in range(g.n)]
     constraints_list = []
+    CL=find_max_clique(g.edges)
+    col=1
+    for p in CL:
+        var_domains[p]=[col]
+        col+=1
+    print("Clique max détectée avec "+str(col-1)+" couleurs")
+    if colours <= col-1:
+        return []
     for e in g.edges:
         tuple_list = []
-        x = e[0]
-        y = e[1]
+        x = e[1]
+        y = e[0]
         for x_value in var_domains[x]:
             for y_value in var_domains[y]:
                 if x_value != y_value:
@@ -69,3 +81,7 @@ def create_graph_instance(filename):
     I = Instance(g.n,var_domains,constraints_list)
     return I
 
+def find_max_clique(edges):
+    G=nx.from_edgelist(edges)
+    L=max_clique(G)
+    return L
