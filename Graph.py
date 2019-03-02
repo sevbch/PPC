@@ -58,6 +58,7 @@ def create_graph_instance(filename, colours=None):
     g = get_graph(filename)
     if colours==None:
         var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
+        print("Tentative de coloration avec au plus "+str(g.deg_max+1)+" couleurs")
     else:
         var_domains = [list(reversed(range(1, colours + 1))) for i in range(g.n)]
     constraints_list = []
@@ -67,7 +68,7 @@ def create_graph_instance(filename, colours=None):
         var_domains[p]=[col]
         col+=1
     print("Clique max détectée avec "+str(col-1)+" couleurs")
-    if colours < col-1:
+    if colours!=None and colours < col-1:
         return []
     for e in g.edges:
         tuple_list = []

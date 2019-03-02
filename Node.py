@@ -16,6 +16,7 @@ class Node:
         self.Domains = var_domains
         self.father_var = 0
         self.status = 10 # initialisation à une valeur quelquonque
+        self.to_check=[]
         
     def revise(self,x,y,x_value,I):
         """Essaie de trouver y_value pour y tel que (x_value,y_value) soit faisable pour C(x,y)"""
@@ -81,10 +82,10 @@ class Node:
                         aTester.append((x,y))
                         aTester.append((y,x))
         else:
-            x=self.father_var
-            for y in I.Uni[x]:
-                aTester.append((x,y))
-                aTester.append((y,x))
+            for x in self.to_check:
+                for y in I.Uni[x]:
+                    aTester.append((x,y))
+                    aTester.append((y,x))
         infeasible = False
         while aTester != [] and not infeasible:
             (x,y) = aTester.pop()
@@ -99,9 +100,7 @@ class Node:
                 self.Domains[x].remove(x_value)
                 if len(self.Domains[x]) == 0:
                     self.status = -1
-#                    print("infaisabilité détectée dans AC, status : "+str(self.status))
                     infeasible = True
-#            print(x,self.Domains[x])
             if removed:
                 for y2 in I.Uni[x]:
                     if y2!=y:
@@ -174,13 +173,15 @@ class Node:
             y_idx=0
             max_y_idx=len(I.Uni[x])
             while not infeasible and y_idx < max_y_idx:
-                y=I.Uni[y_idx]
+                y=I.Uni[x][y_idx]
                 if x>y:
                     c_id = I.Cons_ID[x][y]
                     toPOP=[]
                     for b in self.Domains[y]:
                         if not I.Cons_Tuple[c_id][a][b]:
                             toPOP.append(b)
+                    if toPOP!=[]:
+                        self.to_check.append(y)
                     for b in toPOP:
                         self.Domains[y].remove(b)
                         count+=1
@@ -188,12 +189,14 @@ class Node:
                         self.status = -1
                         infeasible = True
                         break
-                elif y<x:
+                else:
                     c_id = I.Cons_ID[y][x]
                     toPOP=[]
                     for b in self.Domains[y]:
                         if not I.Cons_Tuple[c_id][b][a]:
                             toPOP.append(b)
+                    if toPOP!=[]:
+                        self.to_check.append(y)
                     for b in toPOP:
                         self.Domains[y].remove(b)
                         count+=1
@@ -270,8 +273,10 @@ class Node:
             self.branch = []
             self.branch.append(Node(ID_left,D_left))
             self.branch[0].father_var = var
+            self.branch[0].to_check.append(var)
             self.branch.append(Node(ID_right,D_right))
             self.branch[1].father_var = var
+            self.branch[1].to_check.append(var)
             
         elif branching_strat == 1:
             k = 0
@@ -283,6 +288,7 @@ class Node:
                 D_branch[var].append(val)
                 self.branch.append(Node(ID_branch,D_branch))
                 self.branch[k].father_var = var
+                self.branch[k].to_check.append(var)
                 k += 1
         else:
             print ("ce style de branchement n'existe pas")

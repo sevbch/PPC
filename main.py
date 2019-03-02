@@ -27,7 +27,7 @@ var_strat = 1
 # 0 : on branche sur la variable de plus grand domaine (cf branching_strat = 0)
 # 1 : on branche sur la variable de plus petit domaine (cf branching_strat = 1)
 # --------------------- stratégie de parcours ---------------------
-search_strat = 2
+search_strat = 1
 # 0 : en largeur
 # 1 : en profondeur
 # 2 : en profondeur, mais le fils est choisi aléatoirement
@@ -36,12 +36,13 @@ look_ahead_strat = 2
 # 0 : maintain arc consistency
 # 1 : forward checking
 # 2 : FC+AC
+# 3 : FC + AC de temps en temps
 
 
 
 # ****************** INSTANCE & RESOLUTION ******************
 
-
+"""
 # --------------------- reines ---------------------
 t1 = time()
 #I_Q = create_queens_instance(125)
@@ -106,18 +107,25 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 
 # ****************** résolution ******************
 #filename = "./graphes/jean.col" # solution exacte : 10
-#filename = "./graphes/myciel3.col" # solution exacte : 4
-filename = "./graphes/myciel5.col" # solution exacte : 6
+filename = "./graphes/myciel3.col" # solution exacte : 4
+#filename = "./graphes/myciel5.col" # solution exacte : 6
 #filename = "./graphes/queen10_10.col" # solution exacte : 10
+#filename = "./graphes/miles1000.col" # solution exacte : 42
 #coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 
 
 
 # vieille méthode pour checker
 t1 = time()
-I = create_graph_instance(filename,6)
+I = create_graph_instance(filename,3)
+
 if I!=[]:
     I.compute_useful_objects()
+    print(I.Constraints)
+    print(I.Cons_ID[8][4])
+    print(I.Cons_Tuple[I.Cons_ID[8][4]][3][3])
+    print(I.Uni[4])
+    print(I.Uni[8])
     print(I.N,I.M)
     t2 = time()
     print("Temps de création : "+str(t2-t1))
@@ -130,4 +138,3 @@ else:
     t2 = time()
     print("Temps de création : "+str(t2-t1))
     print("Problème infaisable par clique max")
-"""

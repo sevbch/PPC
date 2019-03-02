@@ -82,12 +82,12 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         #print("My domain before AC",current_node.Domains)
         
         # *** stratégie look ahead ***
-        if nbr_nodes == 0: # on est à la racine ==> on fait AC
+        if nbr_nodes==0:
             b1=time()
             current_node.AC3(I)
             b2=time()
             ac_time+=b2-b1
-#            print("coucou")
+
         else:
             if look_ahead_strat == 0:
                 b1=time()
@@ -109,6 +109,19 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
                 current_node.AC3(I)
                 b2=time()
                 ac_time+=b2-b1
+            elif look_ahead_strat == 3:
+                b1=time()
+                count_FC+=current_node.FC(I)
+                b2=time()
+                fc_time+=b2-b1
+                
+                if len(current_node.ID)%2==0:
+                    b1=time()
+                    current_node.AC3(I)
+                    b2=time()
+                    ac_time+=b2-b1
+            else:
+                print("Pas de stratégie valide")
         
         #print("My domain after AC",current_node.Domains)
         
