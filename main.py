@@ -41,19 +41,19 @@ look_ahead_strat = 2
 
 # ****************** INSTANCE & RESOLUTION ******************
 
+"""
 # --------------------- reines ---------------------
-#t1 = time()
-#I = create_queens_instance(125)
-#print(sum([len(I.Constraints[c][2]) for c in range(I.M)]))
-#print(time()-t1)
-#I.compute_useful_objects()
-#t2 = time()
-#print("Temps de création : "+str(t2-t1))
-#sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
-#t3 = time()
-#print_sol(sol, I)
-#print("Temps de résolution : "+str(t3-t2))
-
+t1 = time()
+#I_Q = create_queens_instance(125)
+print(time()-t1)
+#I_Q.compute_useful_objects()
+t2 = time()
+print("Temps de création : "+str(t2-t1))
+sol, nb_col = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat)
+t3 = time()
+#print_sol(sol, I_Q)
+print("Temps de résolution : "+str(t3-t2))
+"""
 
 
 # --------------------- graphes ---------------------
@@ -106,15 +106,16 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 
 # ****************** résolution ******************
 #filename = "./graphes/jean.col" # solution exacte : 10
-filename = "./graphes/myciel3.col" # solution exacte : 4 ATTENTION PROBLEME DE LECTURE DU FICHIER ?
-#filename = "./graphes/myciel5.col" # 
+#filename = "./graphes/myciel3.col" # solution exacte : 4
+filename = "./graphes/myciel5.col" # solution exacte : 6
+#filename = "./graphes/queen10_10.col" # solution exacte : 10
 #coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 
 
 
 # vieille méthode pour checker
 t1 = time()
-I = create_graph_instance(filename,3)
+I = create_graph_instance(filename,6)
 if I!=[]:
     I.compute_useful_objects()
     print(I.N,I.M)

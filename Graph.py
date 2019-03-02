@@ -67,7 +67,7 @@ def create_graph_instance(filename, colours=None):
         var_domains[p]=[col]
         col+=1
     print("Clique max détectée avec "+str(col-1)+" couleurs")
-    if colours <= col-1:
+    if colours < col-1:
         return []
     for e in g.edges:
         tuple_list = []

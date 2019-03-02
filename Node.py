@@ -74,11 +74,17 @@ class Node:
         
     def AC3(self,I):
         aTester = [] #liste des paires à tester
-        for x in range(I.N):
-            for y in range(x):
-                if I.Cons_ID[x][y] != -1:
-                    aTester.append((x,y))
-                    aTester.append((y,x))
+        if self.ID=='':
+            for x in range(I.N):
+                for y in range(x):
+                    if I.Cons_ID[x][y] != -1:
+                        aTester.append((x,y))
+                        aTester.append((y,x))
+        else:
+            x=self.father_var
+            for y in I.Uni[x]:
+                aTester.append((x,y))
+                aTester.append((y,x))
         infeasible = False
         while aTester != [] and not infeasible:
             (x,y) = aTester.pop()
@@ -160,56 +166,44 @@ class Node:
                     Q.append((x,a))
     
     def FC(self, I):
-        if self.status == 10:
-            count=0
-#            print("FC")
-            x = self.father_var
-            if len(self.Domains[x]) == 1:
-                #print ("on est dans le if")
-                #print(self.Domains[x])
-                a = self.Domains[x][0]
-                infeasible = False
-                y = 0
-                while not infeasible and y < I.N:
-                    if x>y:
-                        if I.Cons_ID[x][y] != -1:
-                            c_id = I.Cons_ID[x][y]
-                            toPOP=[]
-                            for b in self.Domains[y]:
-                                if not I.Cons_Tuple[c_id][a][b]:
-                                    toPOP.append(b)
-                            for b in toPOP:
-                                self.Domains[y].remove(b)
-                                count+=1
-                                if len(self.Domains[y]) == 0:
-                                    self.status = -1
-#                                    print("infaisabilité détectée dans FC, status : "+str(self.status))
-                                    infeasible = True
-                                    break
-                    elif y<x:
-                        if I.Cons_ID[y][x] != -1:
-                            c_id = I.Cons_ID[y][x]
-                            toPOP=[]
-                            for b in self.Domains[y]:
-                                if not I.Cons_Tuple[c_id][b][a]:
-                                    self.Domains[y].remove(b)
-                                    if len(self.Domains[y]) == 0:
-                                        self.status = -1
-#                                        print("infaisabilité détectée dans FC, status : "+str(self.status))
-                                        infeasible = True
-                                        break
-                            for b in toPOP:
-                                self.Domains[y].remove(b)
-                                count+=1
-                                if len(self.Domains[y]) == 0:
-                                    self.status = -1
-#                                    print("infaisabilité détectée dans FC, status : "+str(self.status))
-                                    infeasible = True
-                                    break
-                    y += 1
-            return count
-        else:
-            return 0
+        count=0
+        x = self.father_var
+        if len(self.Domains[x]) == 1:
+            a = self.Domains[x][0]
+            infeasible = False
+            y_idx=0
+            max_y_idx=len(I.Uni[x])
+            while not infeasible and y_idx < max_y_idx:
+                y=I.Uni[y_idx]
+                if x>y:
+                    c_id = I.Cons_ID[x][y]
+                    toPOP=[]
+                    for b in self.Domains[y]:
+                        if not I.Cons_Tuple[c_id][a][b]:
+                            toPOP.append(b)
+                    for b in toPOP:
+                        self.Domains[y].remove(b)
+                        count+=1
+                    if len(self.Domains[y]) == 0:
+                        self.status = -1
+                        infeasible = True
+                        break
+                elif y<x:
+                    c_id = I.Cons_ID[y][x]
+                    toPOP=[]
+                    for b in self.Domains[y]:
+                        if not I.Cons_Tuple[c_id][b][a]:
+                            toPOP.append(b)
+                    for b in toPOP:
+                        self.Domains[y].remove(b)
+                        count+=1
+                    if len(self.Domains[y]) == 0:
+                        self.status = -1
+                        infeasible = True
+                        break
+                y_idx += 1
+        return count
+
     
     def get_ID(self):
         return self.ID
