@@ -41,7 +41,7 @@ look_ahead_strat = 2
 
 # ****************** INSTANCE & RESOLUTION ******************
 
-"""
+
 # --------------------- reines ---------------------
 t1 = time()
 #I_Q = create_queens_instance(125)
@@ -130,3 +130,4 @@ else:
     t2 = time()
     print("Temps de création : "+str(t2-t1))
     print("Problème infaisable par clique max")
+"""

@@ -8,6 +8,7 @@ Created on Wed Feb 20 22:10:45 2019
 from Node import Node
 from copy import copy
 import numpy as np
+from time import time
 np.random.seed(0)
 
 
@@ -63,6 +64,9 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
     nbr_fails = 0
     count_FC = 0
     nchildren=1
+    br_time=0
+    ac_time=0
+    fc_time=0
     #print(root_node.Domains)
     
     while nodes_list != [] and not found_feas:
@@ -79,16 +83,32 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         
         # *** stratégie look ahead ***
         if nbr_nodes == 0: # on est à la racine ==> on fait AC
+            b1=time()
             current_node.AC3(I)
+            b2=time()
+            ac_time+=b2-b1
 #            print("coucou")
         else:
             if look_ahead_strat == 0:
+                b1=time()
                 current_node.AC3(I)
+                b2=time()
+                ac_time+=b2-b1
             elif look_ahead_strat == 1:
+                b1=time()
                 count_FC+=current_node.FC(I)
+                b2=time()
+                fc_time+=b2-b1
             elif look_ahead_strat == 2:
+                b1=time()
                 count_FC+=current_node.FC(I)
+                b2=time()
+                fc_time+=b2-b1
+                
+                b1=time()
                 current_node.AC3(I)
+                b2=time()
+                ac_time+=b2-b1
         
         #print("My domain after AC",current_node.Domains)
         
@@ -114,12 +134,15 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
                 break
             
         else:
+            b1=time()
             var_ID, var_value = current_node.find_branch(var_strat)
             current_node.branch(var_ID,var_value,branching_strat)
             nchildren=len(current_node.branch)
             for k in range(nchildren):
                 nodes_list.append(current_node.branch[k])
             nchildren=len(current_node.branch)
+            b2=time()
+            br_time+=b2-b1
                 
         
         nbr_nodes += 1
@@ -132,6 +155,9 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
         print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
         print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+        print("Temps passé à brancher seulement : "+str(br_time))
+        print("Temps passé sur l'AC : "+str(ac_time))
+        print("Temps passé sur le FC : "+str(fc_time))
         return solution, nb_col(solution,I)
     
     else:

@@ -76,8 +76,8 @@ class Node:
         aTester = [] #liste des paires à tester
         if self.ID=='':
             for x in range(I.N):
-                for y in range(x):
-                    if I.Cons_ID[x][y] != -1:
+                for y in I.Uni[x]:
+                    if x>y:
                         aTester.append((x,y))
                         aTester.append((y,x))
         else:
