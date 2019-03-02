@@ -70,13 +70,13 @@ range Cases=0..(T*(N-1)-1);
 		}
 	
 	}
-	*/
+	
 	forall(j in Joueurs){
 		forall(p in Periodes){
 			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi((tab[m] % T) == p-1)<=2;		
 		}	
 	}		
-	
+	*/
 	forall(j in Joueurs){
 		forall(p in Periodes){
 			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi(tab[m] % T == p-1)==2-ftoi(Factice[j]==p);		
@@ -108,12 +108,12 @@ for(var p in Periodes){
 main  {
 
 var f = cp.factory;
-var phase1 = f.searchPhase( thisOplModel.tab, f.selectSmallest(f.domainSize()), f.selectSmallest(f.value()));  
+var phase1 = f.searchPhase( thisOplModel.Factice, f.selectSmallest(f.domainSize()), f.selectSmallest(f.value()));  
 var phase2 = f.searchPhase( thisOplModel.tab, f.selectLargest(f.domainSize()),  f.selectSmallest(f.value()));
 var phase3 = f.searchPhase( thisOplModel.tab, f.selectSmallest(f.varIndex(thisOplModel.tab)),  f.selectSmallest(f.value()));
 var phase4 = f.searchPhase( thisOplModel.tab, f.selectLargest(f.varIndex(thisOplModel.tab)),  f.selectSmallest(f.value()));
 var phase5 = f.searchPhase( thisOplModel.tab, f.selectSmallest(f.varIndex(thisOplModel.tab)), f.selectRandomValue());
-cp.setSearchPhases(phase5); 
+cp.setSearchPhases(phase1); 
 
 thisOplModel.generate();
 cp.solve();
@@ -128,5 +128,5 @@ for(var p in thisOplModel.Periodes){
 	writeln();
 }
 }
-
 */
+
