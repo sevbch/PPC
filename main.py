@@ -104,7 +104,8 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
         # on regarde si c'est faisable
         print("\n"+"Résolution numéro : "+str(it)+"\n")
         sol2, nb_col2 = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
-        print("Nombre de couleurs utilisées : "+str(nb_col2)+"\n")
+        if nb_col2 != 0:
+            print("Nombre de couleurs utilisées : "+str(nb_col2)+"\n")
     
     t3 = time()
     print_sol(sol1,I1)
