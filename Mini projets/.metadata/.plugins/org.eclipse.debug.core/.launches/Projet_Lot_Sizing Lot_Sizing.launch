@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="opl.launchType">
+<stringAttribute key="opl.debugModel.ATTR_ELEMENT_ID" value="=P\rojet_Lot_SizingRCon\figu\rations d'exécutionrLot_Sizing"/>
+<stringAttribute key="opl.debugModel.ATTR_PROJECT" value="Projet_Lot_Sizing"/>
+<stringAttribute key="opl.debugModel.ATTR_RUN_CONFIG" value="Lot_Sizing"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Projet_Lot_Sizing"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+</launchConfiguration>

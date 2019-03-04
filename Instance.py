@@ -8,7 +8,7 @@ from copy import copy
 
 class Instance:
     
-    def __init__(self,nbr_var,var_domains,constraints_list):
+    def __init__(self,nbr_var,var_domains,constraints_list,lower_bound=0):
         self.N = nbr_var
         self.M = len(constraints_list)
         self.Domains = var_domains
@@ -18,6 +18,7 @@ class Instance:
             if d > self.d_max:
                 self.d_max = d
         self.Constraints = constraints_list
+        self.lb = lower_bound
         
     def compute_useful_objects(self):
         

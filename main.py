@@ -63,17 +63,22 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
     
     t1 = time()
     I2 = create_graph_instance(filename)
+    LB = I2.lb
+#    print("Clique max dans ce graphe (borne inf au nombre chromatique) : ",LB)
     I2.compute_useful_objects()
     t2 = time()
     print("Temps de création : "+str(t2-t1))
     
+    it = 1
+    print("\n"+"Résolution numéro : "+str(it)+"\n")
     sol2, nb_col2 = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
+    print("Nombre de couleurs utilisées : "+str(nb_col2)+"\n")
     sol1, nb_col1 = sol2, nb_col2
     I1 = I2.copy_instance()
     I1.compute_useful_objects()
     
-    while sol2 != []:
-        
+    while sol2 != [] and nb_col2 != LB:
+        it += 1
         # on garde en mémoire la solution précédente
         sol1, nb_col1 = sol2, nb_col2
         del I1
@@ -82,7 +87,7 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
         
         # on réduit le domaine
         n = I1.N
-        var_domains = [list(reversed(range(1,nb_col2))) for x in range(n)]
+        var_domains = [list(reversed(range(1,nb_col1))) for x in range(n)]
         constraints_list = []
         for x in range(n):
             for y in range(x):
@@ -94,14 +99,17 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
                 constraints_list.append((x,y,tuple_list))
         I2 = Instance(n,var_domains,constraints_list)
         I2.compute_useful_objects()
+        print("\n"+"Tentative de coloration avec au plus "+str(nb_col1-1)+" couleurs \n")
         
         # on regarde si c'est faisable
+        print("\n"+"Résolution numéro : "+str(it)+"\n")
         sol2, nb_col2 = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
+        print("Nombre de couleurs utilisées : "+str(nb_col2)+"\n")
     
     t3 = time()
     print_sol(sol1,I1)
-    print("Nombre de couleurs utilisées : "+str(nb_col1))
-    print("Temps de résolution : "+str(t3-t2))
+    print("\n"+"Nombre de couleurs utilisées : "+str(nb_col1))
+    print("Temps total de résolution : "+str(t3-t2))
 
 
 
@@ -112,24 +120,24 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 filename = "./graphes/myciel5.col" # solution exacte : 6
 #filename = "./graphes/queen10_10.col" # solution exacte : 10
 #filename = "./graphes/miles1000.col" # solution exacte : 42
-#coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
+coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 
 
 
 # vieille méthode pour checker
-t1 = time()
-I = create_graph_instance(filename,5)
-print(I.N,I.M)
-if I!=[]:
-    I.compute_useful_objects()
-    t2 = time()
-    print("Temps de création : "+str(t2-t1))
-    sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
-    t3 = time()
-    print("Nombre de couleurs utilisées : "+str(nb_col))
-    #print_sol(sol, I)
-    print("Temps de résolution : "+str(t3-t2))
-else:
-    t2 = time()
-    print("Temps de création : "+str(t2-t1))
-    print("Problème infaisable par clique max")
+#t1 = time()
+#I = create_graph_instance(filename,5)
+#print(I.N,I.M)
+#if I!=[]:
+#    I.compute_useful_objects()
+#    t2 = time()
+#    print("Temps de création : "+str(t2-t1))
+#    sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
+#    t3 = time()
+#    print("Nombre de couleurs utilisées : "+str(nb_col))
+#    #print_sol(sol, I)
+#    print("Temps de résolution : "+str(t3-t2))
+#else:
+#    t2 = time()
+#    print("Temps de création : "+str(t2-t1))
+#    print("Problème infaisable par clique max")

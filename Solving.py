@@ -49,7 +49,7 @@ def nb_col(solution,I):
 def print_sol(solution,I):
     tab=np.zeros((I.N,I.N))
     for x in range(I.N):
-        print("Variable "+str(x)+" affectée à la valeur "+str(solution.Domains[x][0])+"\n")
+        print("Variable "+str(x)+" affectée à la valeur "+str(solution.Domains[x][0]))
         #tab[x][solution.Domains[x][0]-1]=1
     #print(tab)
         
@@ -163,32 +163,32 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
             print("Progress report")
             print(nbr_nodes)
             #print("Noeud le plus loin "+nodes_list[0].ID)
-            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
-            print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
+            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+            print("Il y a eu "+str(nbr_fails)+" échec(s)")
             print("Le FC a enlevé "+str(count_FC)+" fois des variables")
             print("Temps passé à brancher seulement : "+str(br_time))
             print("Temps passé sur l'AC : "+str(ac_time))
-            print("Temps passé sur le FC : "+str(fc_time))
+            print("Temps passé sur le FC : "+str(fc_time)+"\n")
             
             
     if found_feas:
         #print_sol(solution,I)
-        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
-        print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)")
         print("Le FC a enlevé "+str(count_FC)+" fois des variables")
         print("Temps passé à brancher seulement : "+str(br_time))
         print("Temps passé sur l'AC : "+str(ac_time))
-        print("Temps passé sur le FC : "+str(fc_time))
+        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return solution, nb_col(solution,I)
     
     else:
-        print("Le problème est infaisable\n")
-        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)\n")
-        print("Il y a eu "+str(nbr_fails)+" échec(s)\n")
+        print("***** Le problème est infaisable *****")
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)")
         print("Le FC a enlevé "+str(count_FC)+" fois des variables")
         print("Temps passé à brancher seulement : "+str(br_time))
         print("Temps passé sur l'AC : "+str(ac_time))
-        print("Temps passé sur le FC : "+str(fc_time))
+        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return [], 0
 
 
