@@ -20,9 +20,10 @@ from copy import deepcopy as dcopy
 # search_strat = 1
 # look_ahead_strat = 0
 # --------------------- style de branchement ---------------------
-branching_strat = 1
+branching_strat = 2
 # 0 : branchement binaire, on coupe le domaine d'une variable en 2
 # 1 : branchement avec au plux d_max branches : on fixe les valeurs d'une variable dans l'instanciation partielle
+# 2 : pareil que 1 mais en créant seulement 1 noeud à la fois (moins gourmand en mémoire)
 # --------------------- variable de branchement ---------------------
 var_strat = 1
 # 0 : on branche sur la variable de plus grand domaine (cf branching_strat = 0)

@@ -4,7 +4,6 @@ Created on Tue Feb 05 11:14:42 2019
 
 @author: Guillaume
 """
-from copy import copy
 
 def remove_values_from_list(the_list, val):
    return [value for value in the_list if value != val]
@@ -232,24 +231,17 @@ class Node:
         return
     
     def get_status(self):
-        return self.status
-    
-    def copy_domains(self):
-        new_D = []
-        for d in self.Domains:
-            new_D.append(copy(d))
-        return new_D
-    
+        return self.status    
     
     def find_branch(self,var_strat):
         
         if var_strat == 0:
             best_length = 0
             for d in range(len(self.Domains)):
-                if len(self.Domains[d]) > best_length:
+                leng=len(self.Domains[d])
+                if leng > best_length:
                     best_id = d
-                    best_length = len(self.Domains[d])
-            #print("best var to branch",best_id)
+                    best_length = leng
             mid = int(len(self.Domains[best_id])/2)
             value = (self.Domains[best_id][mid-1] + self.Domains[best_id][mid])/2.            
             return best_id, value
@@ -257,9 +249,10 @@ class Node:
         elif var_strat == 1:
             shortest_length = 1000000000 # max(len(self.Domains[d])for d in range(len(self.Domains)))+1
             for d in range(len(self.Domains)):
-                if len(self.Domains[d]) < shortest_length and len(self.Domains[d]) >= 2:
+                leng=len(self.Domains[d])
+                if leng < shortest_length and leng >= 2:
                     best_id = d
-                    shortest_length = len(self.Domains[d])          
+                    shortest_length = leng         
             return best_id, 0
         
         else:
@@ -271,49 +264,54 @@ class Node:
         if branching_strat == 0:
             ID_left = self.get_ID() +'0'
             ID_right = self.get_ID() +'1'
-            D_left = self.copy_domains()
-            D_right = self.copy_domains()
+            D_left = [[j for j in self.Domains[i]] for i in range(len(self.Domains))]
+            D_right = [[j for j in self.Domains[i]] for i in range(len(self.Domains))]
             idx = 0
             while D_left[var][idx] <= value:
                 idx += 1
             D_left[var] = D_left[var][0:idx]
             D_right[var] = D_right[var][idx::]
-            self.branch = []
-            self.branch.append(Node(ID_left,D_left))
-            self.branch[0].father_var = var
-            self.branch[0].to_check.append(var)
-            self.branch.append(Node(ID_right,D_right))
-            self.branch[1].father_var = var
-            self.branch[1].to_check.append(var)
+            new_nodes=[]
+            new_nodes.append(Node(ID_right,D_right))
+            new_nodes[0].father_var = var
+            new_nodes[0].to_check.append(var)
+            new_nodes.append(Node(ID_left,D_left))
+            new_nodes[1].father_var = var
+            new_nodes[1].to_check.append(var)
             
         elif branching_strat == 1:
             k = 0
-            self.branch = []
+            new_nodes = []
             for val in self.Domains[var]:
                 ID_branch = self.get_ID() + str(k)
                 D_branch = [[j for j in self.Domains[i]] for i in range(len(self.Domains))]
                 D_branch[var]=[val]
-                self.branch.append(Node(ID_branch,D_branch))
-                self.branch[k].father_var = var
-                self.branch[k].to_check.append(var)
+                new_nodes.append(Node(ID_branch,D_branch))
+                new_nodes[k].father_var = var
+                new_nodes[k].to_check.append(var)
                 k += 1
+                
+        elif branching_strat == 2:
+            
+            val=self.Domains[var][-1]
+            ID_left = self.get_ID() +'0'
+            ID_right = self.get_ID() +'1'
+            D_left = [[j for j in self.Domains[i]] for i in range(len(self.Domains))]
+            D_right = [[j for j in self.Domains[i]] for i in range(len(self.Domains))]
+            D_left[var]=[val]
+            D_right[var].pop(-1)
+            new_nodes=[]
+            new_nodes.append(Node(ID_right,D_right))
+            new_nodes[0].father_var = var
+            new_nodes[0].to_check.append(var)
+            new_nodes.append(Node(ID_left,D_left))
+            new_nodes[1].father_var = var
+            new_nodes[1].to_check.append(var)
+            
+            
         else:
             print ("ce style de branchement n'existe pas")
+            new_nodes=[]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return new_nodes

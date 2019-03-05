@@ -139,31 +139,32 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
             
         elif status == -1: # unfeasible
             nbr_fails += 1
-            current_node = [] # libère la mémoire
+            del current_node #libère la mémoire
             nchildren=0
             if nbr_nodes == 0: # on est à la racine ==> infaisable
-#                print("on est ici")
                 break
             
         else:
             b1=time()
             var_ID, var_value = current_node.find_branch(var_strat)
             b3=time()
-            current_node.branch(var_ID,var_value,branching_strat)
-            nchildren=len(current_node.branch)
-            for k in range(nchildren):
-                nodes_list.append(current_node.branch[k])
+            #current_node.branch(var_ID,var_value,branching_strat)
+            #nchildren=len(current_node.branches)
+            #for k in range(nchildren):
+             #   nodes_list.append(current_node.branches[k])
+            new_nodes=current_node.branch(var_ID,var_value,branching_strat)
+            nchildren=len(new_nodes)
+            nodes_list+=new_nodes
             b2=time()
             br_time+=b2-b1
             br3_time+=b3-b1
-            current_node.Domains=[] #libère la mémoire
+            del current_node #libère la mémoire
                 
-        
         nbr_nodes += 1
         if nbr_nodes%100000==0:
             print("Progress report")
             print(nbr_nodes)
-            #print("Noeud le plus loin "+nodes_list[0].ID)
+            print("Noeuds en memoire "+str(len(nodes_list)))
             print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
             print("Il y a eu "+str(nbr_fails)+" échec(s)")
             print("Le FC a enlevé "+str(count_FC)+" fois des variables")
