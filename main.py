@@ -10,6 +10,7 @@ from Queens import create_queens_instance
 from time import time
 from Graph import create_graph_instance
 from Node import Node
+from copy import deepcopy as dcopy
 
 
 # ****************** PARAMETRES DE RESOLUTION ******************
@@ -71,48 +72,30 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
     
     it = 1
     print("\n"+"Résolution numéro : "+str(it)+"\n")
-    sol2, nb_col2 = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
-    print("Nombre de couleurs utilisées : "+str(nb_col2)+"\n")
-    sol1, nb_col1 = sol2, nb_col2
-    I1 = I2.copy_instance()
-    I1.compute_useful_objects()
+    sol, nb_col = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
+    print("Nombre de couleurs utilisées : "+str(nb_col)+"\n")
+    look_ahead_strat = 1
     
-    while sol2 != [] and nb_col2 != LB:
-        it += 1
-        # on garde en mémoire la solution précédente
-        sol1, nb_col1 = sol2, nb_col2
-        del I1
-        I1 = I2.copy_instance()
-        del I2
-        
-        # on réduit le domaine
-        n = I1.N
-        var_domains = [list(reversed(range(1,nb_col1))) for x in range(n)]
-        constraints_list = []
-        for x in range(n):
-            for y in range(x):
-                tuple_list = []
-                for x_value in var_domains[x]:
-                    for y_value in var_domains[y]:
-                        if x_value != y_value:
-                            tuple_list.append((x_value,y_value))
-                constraints_list.append((x,y,tuple_list))
-        I2 = Instance(n,var_domains,constraints_list)
-        I2.compute_useful_objects()
-        print("\n"+"Tentative de coloration avec au plus "+str(nb_col1-1)+" couleurs \n")
-        
-        # on regarde si c'est faisable
-        print("\n"+"Résolution numéro : "+str(it)+"\n")
-        sol2, nb_col2 = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
-        if nb_col2 != 0:
-            print("Nombre de couleurs utilisées : "+str(nb_col2)+"\n")
-    
-    t3 = time()
-    print_sol(sol1,I1)
-    print("\n"+"Nombre de couleurs utilisées : "+str(nb_col1))
-    print("Temps total de résolution : "+str(t3-t2))
+    while sol != [] and nb_col != LB:
+        bestsol=dcopy(sol.Domains)
+        t1 = time()
+        I = create_graph_instance(filename,nb_col-1)
+        print(I.N,I.M)
+        if I!=[]:
+            I.compute_useful_objects()
+            t2 = time()
+            print("Temps de création : "+str(t2-t1))
+            sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
+            t3 = time()
+            print("Nombre de couleurs utilisées : "+str(nb_col))
+            #print_sol(sol, I)
+            print("Temps de résolution : "+str(t3-t2))
+        else:
+            t2 = time()
+            print("Temps de création : "+str(t2-t1))
+            print("Problème infaisable par clique max")
 
-
+    return bestsol
 
 # ****************** résolution ******************
 #filename = "./graphes/jean.col" # solution exacte : 10

@@ -5,6 +5,7 @@ Created on Tue Feb 05 11:00:17 2019
 @author: Guillaume
 """
 from copy import copy
+from copy import deepcopy as dcopy
 
 class Instance:
     
@@ -44,8 +45,8 @@ class Instance:
     
     def copy_instance(self):
         n = copy(self.N)
-        var_domains = copy(self.Domains)
-        constraints_list = copy(self.Constraints)
+        var_domains = dcopy(self.Domains)
+        constraints_list = dcopy(self.Constraints)
         return Instance(n,var_domains,constraints_list)
             
             
