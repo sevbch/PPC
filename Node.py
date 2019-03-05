@@ -291,9 +291,8 @@ class Node:
             self.branch = []
             for val in self.Domains[var]:
                 ID_branch = self.get_ID() + str(k)
-                D_branch = self.copy_domains()
-                D_branch[var]=[]
-                D_branch[var].append(val)
+                D_branch = [[j for j in self.Domains[i]] for i in range(len(self.Domains))]
+                D_branch[var]=[val]
                 self.branch.append(Node(ID_branch,D_branch))
                 self.branch[k].father_var = var
                 self.branch[k].to_check.append(var)

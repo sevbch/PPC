@@ -67,6 +67,8 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
     br_time=0
     ac_time=0
     fc_time=0
+    br3_time=0
+    start=time()
     #print(root_node.Domains)
     
     while nodes_list != [] and not found_feas:
@@ -129,10 +131,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         
         current_node.set_status()
         status = current_node.get_status()
-#        if nbr_nodes == 0: # on est à la racine ==> on fait AC
-#            print("status à la première itération : "+str(status)+"\n")
-        
-#        print("My status",status)
+
         
         if status == 1: # solution found
             found_feas = True
@@ -149,13 +148,15 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
         else:
             b1=time()
             var_ID, var_value = current_node.find_branch(var_strat)
+            b3=time()
             current_node.branch(var_ID,var_value,branching_strat)
             nchildren=len(current_node.branch)
             for k in range(nchildren):
                 nodes_list.append(current_node.branch[k])
-            nchildren=len(current_node.branch)
             b2=time()
             br_time+=b2-b1
+            br3_time+=b3-b1
+            current_node.Domains=[] #libère la mémoire
                 
         
         nbr_nodes += 1
@@ -167,8 +168,10 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
             print("Il y a eu "+str(nbr_fails)+" échec(s)")
             print("Le FC a enlevé "+str(count_FC)+" fois des variables")
             print("Temps passé à brancher seulement : "+str(br_time))
+            print("Temps passé à brancher seulement (br3) : "+str(br3_time))
             print("Temps passé sur l'AC : "+str(ac_time))
             print("Temps passé sur le FC : "+str(fc_time)+"\n")
+            print("Temps total écoulé : "+str(time()-start))
             
             
     if found_feas:
