@@ -55,8 +55,14 @@ def print_sol(solution,I):
         
 
 
-def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
+def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search):
     
+    if dynamic_search:
+        branching_strat = 2
+        var_strat = 1
+        search_strat = 1
+        look_ahead_strat = 1
+
     root_node = Node('',copy_domains(I.Domains))
     nodes_list = [root_node]
     found_feas = False
@@ -161,6 +167,13 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
             del current_node #libère la mémoire
                 
         nbr_nodes += 1
+        
+        if dynamic_search and nbr_nodes%10000==0:
+            branching_strat=1
+            search_strat=2
+            n=nodes_list.pop(0)
+            nodes_list.append(n)
+        
         if nbr_nodes%100000==0:
             print("Progress report")
             print(nbr_nodes)
@@ -177,13 +190,14 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat):
             
     if found_feas:
         #print_sol(solution,I)
-        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-        print("Il y a eu "+str(nbr_fails)+" échec(s)")
-        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-        print("Temps passé à brancher seulement : "+str(br_time))
-        print("Temps passé sur l'AC : "+str(ac_time))
-        print("Temps passé sur le FC : "+str(fc_time)+"\n")
-        return solution, nb_col(solution,I)
+        #print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+        #print("Il y a eu "+str(nbr_fails)+" échec(s)")
+        #print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+        #print("Temps passé à brancher seulement : "+str(br_time))
+        #print("Temps passé sur l'AC : "+str(ac_time))
+        #print("Temps passé sur le FC : "+str(fc_time)+"\n")
+        return solution, nb_col(solution,I), nbr_nodes,nbr_fails,br_time,ac_time,fc_time
+
     
     else:
         print("***** Le problème est infaisable *****")
