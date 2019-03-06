@@ -11,6 +11,7 @@ from time import time
 from Graph import create_graph_instance
 from Node import Node
 from copy import deepcopy as dcopy
+import pandas as pd
 
 
 # ****************** PARAMETRES DE RESOLUTION ******************
@@ -28,37 +29,38 @@ branching_strat = 2
 var_strat = 1
 # 0 : on branche sur la variable de plus grand domaine (cf branching_strat = 0)
 # 1 : on branche sur la variable de plus petit domaine (cf branching_strat = 1)
+# 2 : aléatoire
 # --------------------- stratégie de parcours ---------------------
 search_strat = 1
 # 0 : en largeur
 # 1 : en profondeur
-# 2 : en profondeur, mais le fils est choisi aléatoirement
+# 2 : en profondeur, mais le fils est choisi aléatoirement (ne marche qu'avec branching_strat=1)
 # --------------------- stratégie look-ahead ---------------------
 look_ahead_strat = 2
 # 0 : maintain arc consistency
 # 1 : forward checking
 # 2 : FC+AC
 # 3 : FC + AC de temps en temps
+# --------------------- recherche dynamique ---------------------
+dynamic_search=True
+# change de branche et de stratégie automatiquement si le problème semble difficile
+# la recherche dynamique ne tient pas compte des paramètres ci-dessus
 
 
 
 # ****************** INSTANCE & RESOLUTION ******************
-
-"""
 # --------------------- reines ---------------------
+
 t1 = time()
-#I_Q = create_queens_instance(125)
-print(time()-t1)
-#I_Q.compute_useful_objects()
+I_Q = create_queens_instance(140)
+I_Q.compute_useful_objects()
 t2 = time()
 print("Temps de création : "+str(t2-t1))
-sol, nb_col = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat)
+sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search)
 t3 = time()
-#print_sol(sol, I_Q)
 print("Temps de résolution : "+str(t3-t2))
+
 """
-
-
 # --------------------- graphes ---------------------
 
 def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat):
@@ -75,7 +77,6 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
     print("\n"+"Résolution numéro : "+str(it)+"\n")
     sol, nb_col = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
     print("Nombre de couleurs utilisées : "+str(nb_col)+"\n")
-    look_ahead_strat = 1
     
     while sol != [] and nb_col != LB:
         bestsol=dcopy(sol.Domains)
@@ -126,3 +127,4 @@ coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 #    t2 = time()
 #    print("Temps de création : "+str(t2-t1))
 #    print("Problème infaisable par clique max")
+"""

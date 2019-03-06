@@ -4,6 +4,7 @@ Created on Tue Feb 05 11:14:42 2019
 
 @author: Guillaume
 """
+import numpy.random as rdn
 
 def remove_values_from_list(the_list, val):
    return [value for value in the_list if value != val]
@@ -253,6 +254,11 @@ class Node:
                 if leng < shortest_length and leng >= 2:
                     best_id = d
                     shortest_length = leng         
+            return best_id, 0
+        
+        elif var_strat == 2:
+            possible = [d for d in range(len(self.Domains)) if len(self.Domains[d])>=2]
+            best_id = possible[rdn.randint(0,len(possible))]
             return best_id, 0
         
         else:
