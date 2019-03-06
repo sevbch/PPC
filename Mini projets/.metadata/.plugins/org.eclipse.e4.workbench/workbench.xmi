@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_I3-l4Tp6EemGfcVrJol2BA" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_I3-l4jp6EemGfcVrJol2BA" bindingContexts="_I3_M8zp6EemGfcVrJol2BA">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi echecs.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi echecs.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;Tournoi echecs.dat&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.dat&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi echecs.dat&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Lot_Sizing.mod&quot; tooltip=&quot;Projet_Lot_Sizing/Lot_Sizing.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Projet_Lot_Sizing/Lot_Sizing.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;Lot_Sizing.dat&quot; tooltip=&quot;Projet_Lot_Sizing/Lot_Sizing.dat&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Projet_Lot_Sizing/Lot_Sizing.dat&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi echecs.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.ops&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi echecs.ops&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;rez.dat&quot; tooltip=&quot;Tournoi echecs/rez.dat&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/rez.dat&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;modele_2.mod&quot; tooltip=&quot;Projet 4/modele_2.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Projet 4/modele_2.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;instance_1.dat&quot; tooltip=&quot;Projet 4/instance_1.dat&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Projet 4/instance_1.dat&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;Tournoi echecs.dat&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.dat&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi echecs.dat&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_2.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_2.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_2.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_3.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_3.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_3.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi_echecs_3.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_3.ops&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_3.ops&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi_echecs_2.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_2.ops&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_2.ops&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_2_factice.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_2_factice.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_2_factice.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_3_factice.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_3_factice.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_3_factice.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi echecs.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi echecs.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_guil_sevmodif.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_guil_sevmodif.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_guil_sevmodif.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_22.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_22.mod&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi_echecs_22.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi echecs.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.ops&quot;>&#xD;&#xA;&lt;persistable path=&quot;/Tournoi echecs/Tournoi echecs.ops&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;sched_sequence.dat&quot; tooltip=&quot;C:\Program Files\IBM\ILOG\CPLEX_Studio128\opl\examples\opl\sched_sequence\sched_sequence.dat&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Program%20Files/IBM/ILOG/CPLEX_Studio128/opl/examples/opl/sched_sequence/sched_sequence.dat&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;sched_sequence.mod&quot; tooltip=&quot;C:\Program Files\IBM\ILOG\CPLEX_Studio128\opl\examples\opl\sched_sequence\sched_sequence.mod&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Program%20Files/IBM/ILOG/CPLEX_Studio128/opl/examples/opl/sched_sequence/sched_sequence.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;euler.mod&quot; tooltip=&quot;C:\Program Files\IBM\ILOG\CPLEX_Studio128\opl\examples\opl\euler\euler.mod&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Program%20Files/IBM/ILOG/CPLEX_Studio128/opl/examples/opl/euler/euler.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;timetabling.mod&quot; tooltip=&quot;C:\Program Files\IBM\ILOG\CPLEX_Studio128\opl\examples\opl\timetabling\timetabling.mod&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Program%20Files/IBM/ILOG/CPLEX_Studio128/opl/examples/opl/timetabling/timetabling.mod&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_I3-l4jp6EemGfcVrJol2BA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_JilCEjp6EemGfcVrJol2BA" label="%trimmedwindow.label.eclipseSDK" x="-1454" y="-322" width="998" height="611">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_I3-l4jp6EemGfcVrJol2BA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_JilCEjp6EemGfcVrJol2BA" label="%trimmedwindow.label.eclipseSDK" x="-2383" y="-322" width="998" height="611">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workingSets/>"/>
@@ -47,7 +47,7 @@
           <tags>persp.viewSC:ilog.odms.ide.oaas.ui.ServersView</tags>
           <tags>persp.viewSC:ilog.odms.ide.server.ui.ServersView</tags>
           <children xsi:type="basic:PartSashContainer" xmi:id="_J1FHUTp6EemGfcVrJol2BA" selectedElement="_J1Fuazp6EemGfcVrJol2BA" horizontal="true">
-            <children xsi:type="basic:PartSashContainer" xmi:id="_J1FuYDp6EemGfcVrJol2BA" containerData="1860" selectedElement="_J1FuYTp6EemGfcVrJol2BA">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_J1FuYDp6EemGfcVrJol2BA" containerData="1735" selectedElement="_J1FuYTp6EemGfcVrJol2BA">
               <children xsi:type="basic:PartStack" xmi:id="_J1FuYTp6EemGfcVrJol2BA" elementId="topLeft" containerData="5000" selectedElement="_J1FuYjp6EemGfcVrJol2BA">
                 <tags>newtablook</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_J1FuYjp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.navigator.OplProjectExplorer" ref="_J0dcQDp6EemGfcVrJol2BA"/>
@@ -62,12 +62,11 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_J1FuaTp6EemGfcVrJol2BA" elementId="org.eclipse.debug.ui.BreakpointView" ref="_J08kcDp6EemGfcVrJol2BA"/>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_J1Fuazp6EemGfcVrJol2BA" containerData="8140" selectedElement="_GZbH4Dq-EemGfcVrJol2BA" horizontal="true">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_GZbH4Dq-EemGfcVrJol2BA" containerData="7694" selectedElement="_J1Fucjp6EemGfcVrJol2BA">
-                <children xsi:type="advanced:Placeholder" xmi:id="_J1FubDp6EemGfcVrJol2BA" elementId="org.eclipse.ui.editorss" containerData="7845" ref="_JyhikDp6EemGfcVrJol2BA"/>
-                <children xsi:type="basic:PartStack" xmi:id="_J1Fucjp6EemGfcVrJol2BA" elementId="bottomRight" containerData="3207" selectedElement="_J1FudDp6EemGfcVrJol2BA">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_J1Fuazp6EemGfcVrJol2BA" containerData="8265" selectedElement="_GZbH4Dq-EemGfcVrJol2BA" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_GZbH4Dq-EemGfcVrJol2BA" containerData="7239" selectedElement="_J1FubDp6EemGfcVrJol2BA">
+                <children xsi:type="advanced:Placeholder" xmi:id="_J1FubDp6EemGfcVrJol2BA" elementId="org.eclipse.ui.editorss" containerData="7881" ref="_JyhikDp6EemGfcVrJol2BA"/>
+                <children xsi:type="basic:PartStack" xmi:id="_J1Fucjp6EemGfcVrJol2BA" elementId="bottomRight" containerData="3171" selectedElement="_J1FudDp6EemGfcVrJol2BA">
                   <tags>newtablook</tags>
-                  <tags>active</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_J1Fuczp6EemGfcVrJol2BA" elementId="org.eclipse.ui.views.ProblemView" ref="_J0ppgDp6EemGfcVrJol2BA"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_J1FudDp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.ScriptLogView" ref="_J0resDp6EemGfcVrJol2BA"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_J1GVcDp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.SolutionsView" ref="_J0ss0Dp6EemGfcVrJol2BA"/>
@@ -80,7 +79,7 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_J1GVdzp6EemGfcVrJol2BA" elementId="ilog.odms.ide.server.ui.ServersView" ref="_J1CrEDp6EemGfcVrJol2BA"/>
                 </children>
               </children>
-              <children xsi:type="basic:PartSashContainer" xmi:id="_J1FubTp6EemGfcVrJol2BA" containerData="1254">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_J1FubTp6EemGfcVrJol2BA" containerData="1709">
                 <children xsi:type="basic:PartStack" xmi:id="_J1Fubjp6EemGfcVrJol2BA" elementId="topRight" containerData="8000" selectedElement="_J1Fubzp6EemGfcVrJol2BA">
                   <tags>newtablook</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_J1Fubzp6EemGfcVrJol2BA" elementId="org.eclipse.ui.views.ContentOutline" ref="_J0ji4Dp6EemGfcVrJol2BA"/>
@@ -118,26 +117,71 @@
       <toolbar xmi:id="_Kaik0Tp6EemGfcVrJol2BA" elementId="org.eclipse.ui.internal.introview" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_JyhikDp6EemGfcVrJol2BA" elementId="org.eclipse.ui.editorss" selectedElement="_JyhikTp6EemGfcVrJol2BA">
-      <children xsi:type="basic:PartStack" xmi:id="_JyhikTp6EemGfcVrJol2BA" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_rhLYEDz3EemqsfKO2YM9Ow">
+      <children xsi:type="basic:PartStack" xmi:id="_JyhikTp6EemGfcVrJol2BA" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_qsWB0Dz3EemqsfKO2YM9Ow">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_qsWB0Dz3EemqsfKO2YM9Ow" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi echecs.dat" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/data.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.DataEditor&quot; name=&quot;Tournoi echecs.dat&quot; partName=&quot;Tournoi echecs.dat&quot; title=&quot;Tournoi echecs.dat&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.dat&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi echecs.dat&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;193&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>ilog.odms.ide.ui.editors.DataEditor</tags>
           <tags>removeOnHide</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_rhLYEDz3EemqsfKO2YM9Ow" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi echecs.mod" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/model.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi echecs.mod&quot; partName=&quot;Tournoi echecs.mod&quot; title=&quot;Tournoi echecs.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.mod&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi echecs.mod&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;256&quot; selectionTopPixel=&quot;1383&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi echecs.mod&quot; partName=&quot;Tournoi echecs.mod&quot; title=&quot;Tournoi echecs.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.mod&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi echecs.mod&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;4&quot; selectionOffset=&quot;2242&quot; selectionTopPixel=&quot;1380&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>ilog.odms.ide.ui.editors.ModelEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_qMUUID_7Eem2w8a8hyxKhg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi_echecs_2.ops" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/setting.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi_echecs_2.ops&quot; partName=&quot;Tournoi_echecs_2.ops&quot; title=&quot;Tournoi_echecs_2.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_2.ops&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi_echecs_2.ops&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.SettingEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_Q_yykEABEem2w8a8hyxKhg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi echecs.ops" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/setting.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi echecs.ops&quot; partName=&quot;Tournoi echecs.ops&quot; title=&quot;Tournoi echecs.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi echecs.ops&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi echecs.ops&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.SettingEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_mW9NUEAVEem2w8a8hyxKhg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi_echecs_2.mod" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/model.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_2.mod&quot; partName=&quot;Tournoi_echecs_2.mod&quot; title=&quot;Tournoi_echecs_2.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_2.mod&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi_echecs_2.mod&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1138&quot; selectionTopPixel=&quot;165&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.ModelEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_Itm1wEAIEem2w8a8hyxKhg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi_echecs_2_factice.mod" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/model.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_2_factice.mod&quot; partName=&quot;Tournoi_echecs_2_factice.mod&quot; title=&quot;Tournoi_echecs_2_factice.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_2_factice.mod&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi_echecs_2_factice.mod&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;35&quot; selectionOffset=&quot;612&quot; selectionTopPixel=&quot;240&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.ModelEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_4dnbQEAWEem2w8a8hyxKhg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi_echecs_3.mod" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/model.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_3.mod&quot; partName=&quot;Tournoi_echecs_3.mod&quot; title=&quot;Tournoi_echecs_3.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_3.mod&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi_echecs_3.mod&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;788&quot; selectionTopPixel=&quot;285&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.ModelEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_vOY5UEAbEemcwcXhw6IScA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi_echecs_3_factice.mod" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/model.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.ModelEditor&quot; name=&quot;Tournoi_echecs_3_factice.mod&quot; partName=&quot;Tournoi_echecs_3_factice.mod&quot; title=&quot;Tournoi_echecs_3_factice.mod&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_3_factice.mod&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi_echecs_3_factice.mod&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;940&quot; selectionTopPixel=&quot;315&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.ModelEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_3WAHYEAgEemcwcXhw6IScA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tournoi_echecs_3.ops" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/obj16/setting.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;ilog.odms.ide.ui.editors.SettingEditor&quot; name=&quot;Tournoi_echecs_3.ops&quot; partName=&quot;Tournoi_echecs_3.ops&quot; title=&quot;Tournoi_echecs_3.ops&quot; tooltip=&quot;Tournoi echecs/Tournoi_echecs_3.ops&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Tournoi echecs/Tournoi_echecs_3.ops&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>ilog.odms.ide.ui.editors.SettingEditor</tags>
           <tags>removeOnHide</tags>
         </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_J0dcQDp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.navigator.OplProjectExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Projets OPL" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/eview16/oplprojectexplorer.png" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot;>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecs&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cution&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 1&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;selection>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 1&quot;/>&#xD;&#xA;&lt;/selection>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot;>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecs&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cution&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 1&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 2&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 3&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 4&quot;/>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 5&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;selection>&#xD;&#xA;&lt;element identifier=&quot;=Tou\rnoi echecsRCon\figu\rations d&amp;apos;ex&#xe9;cutionrCon\figu\ration 2&quot;/>&#xD;&#xA;&lt;/selection>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:OPL</tags>
       <menus xmi:id="_J8k2cDp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.navigator.OplProjectExplorer">
@@ -185,7 +229,7 @@
       <toolbar xmi:id="_KDKmoTp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.ProblemBrowserView"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_J0ppgDp6EemGfcVrJol2BA" elementId="org.eclipse.ui.views.ProblemView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Erreurs" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/problems_view.png" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view PRIMARY_SORT_FIELD=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot; categoryGroup=&quot;org.eclipse.ui.ide.severity&quot; markerContentGenerator=&quot;org.eclipse.ui.ide.problemsGenerator&quot; partName=&quot;Erreurs&quot;>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;category IMemento.internal.id=&quot;Erreurs (2 &#xe9;l&#xe9;ments)&quot;/>&#xD;&#xA;&lt;category IMemento.internal.id=&quot;Erreurs&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;columnWidths org.eclipse.ui.ide.locationField=&quot;381&quot; org.eclipse.ui.ide.markerType=&quot;90&quot; org.eclipse.ui.ide.pathField=&quot;120&quot; org.eclipse.ui.ide.resourceField=&quot;90&quot; org.eclipse.ui.ide.severityAndDescriptionField=&quot;537&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.resourceField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.pathField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.locationField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.markerType&quot;/>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view PRIMARY_SORT_FIELD=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot; categoryGroup=&quot;org.eclipse.ui.ide.severity&quot; markerContentGenerator=&quot;org.eclipse.ui.ide.problemsGenerator&quot; partName=&quot;Erreurs&quot;>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;category IMemento.internal.id=&quot;Erreurs (1 &#xe9;l&#xe9;ment)&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;columnWidths org.eclipse.ui.ide.locationField=&quot;381&quot; org.eclipse.ui.ide.markerType=&quot;90&quot; org.eclipse.ui.ide.pathField=&quot;120&quot; org.eclipse.ui.ide.resourceField=&quot;90&quot; org.eclipse.ui.ide.severityAndDescriptionField=&quot;537&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.resourceField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.pathField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.locationField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.markerType&quot;/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:G&#xe9;n&#xe9;ral</tags>
       <tags>highlighted</tags>
@@ -199,8 +243,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view sashLeft=&quot;173&quot; sashRight=&quot;826&quot; sashVisible=&quot;false&quot; scrapContents=&quot;&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:OPL</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_uSF28Dp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.ScriptLogView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -226,7 +268,7 @@
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_gjHosTp-EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.ConflictsView"/>
+      <toolbar xmi:id="_gjHosTp-EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.ConflictsView" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_J0yMYDp6EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.RelaxationsView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Relaxations" iconURI="platform:/plugin/ilog.odms.ide.ui/icons/full/eview16/relaxation.png" closeable="true">
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
@@ -242,6 +284,7 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:OPL</tags>
+      <tags>highlighted</tags>
       <menus xmi:id="_gw4-8Dp-EemGfcVrJol2BA" elementId="ilog.odms.ide.ui.views.EngineLogView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -305,14 +348,14 @@
       <children xsi:type="menu:ToolBar" xmi:id="_J2El0Dp6EemGfcVrJol2BA" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
       </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_I2DwgD_vEem2w8a8hyxKhg" elementId="org.eclipse.ui.edit.text.actionSet.presentation" visible="false">
+        <tags>Draggable</tags>
+      </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Jk8ZkDp6EemGfcVrJol2BA" elementId="group.nav" toBeRendered="false">
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_Jk8ZkTp6EemGfcVrJol2BA" elementId="group.nav" toBeRendered="false"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Jk8Zkjp6EemGfcVrJol2BA" elementId="org.eclipse.ui.workbench.navigate">
-        <tags>Draggable</tags>
-      </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_oS9voDz3EemqsfKO2YM9Ow" elementId="ilog.odms.ide.ui.editors.DataEditor" visible="false">
         <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_uPLF0Dp6EemGfcVrJol2BA" elementId="group.editor" toBeRendered="false">

@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="ASCII"?><project>
 	<version>1.0</version>
 	<configs>
-		<config default="true" name="Configuration 1" category="opl">
+		<config default="false" name="Configuration 1" category="opl">
 			<ref name="Tournoi echecs.mod" type="model">
 			</ref>
 			<ref name="Tournoi echecs.ops" type="setting">
 			</ref>
 			<ref name="Tournoi echecs.dat" type="data">
+			</ref>
+		</config>
+		<config default="true" name="Configuration 2" category="opl">
+			<ref name="Tournoi_echecs_2.mod" type="model">
+			</ref>
+			<ref name="Tournoi echecs.dat" type="data">
+			</ref>
+			<ref name="Tournoi_echecs_2.ops" type="setting">
+			</ref>
+		</config>
+		<config default="false" name="Configuration 3" category="opl">
+			<ref name="Tournoi echecs.dat" type="data">
+			</ref>
+			<ref name="Tournoi_echecs_2_factice.mod" type="model">
+			</ref>
+			<ref name="Tournoi_echecs_2.ops" type="setting">
+			</ref>
+		</config>
+		<config default="false" name="Configuration 4" category="opl">
+			<ref name="Tournoi_echecs_3.mod" type="model">
+			</ref>
+			<ref name="Tournoi echecs.dat" type="data">
+			</ref>
+			<ref name="Tournoi_echecs_3.ops" type="setting">
+			</ref>
+		</config>
+		<config default="false" name="Configuration 5" category="opl">
+			<ref name="Tournoi_echecs_3_factice.mod" type="model">
+			</ref>
+			<ref name="Tournoi echecs.dat" type="data">
+			</ref>
+			<ref name="Tournoi_echecs_3.ops" type="setting">
 			</ref>
 		</config>
 	</configs>
