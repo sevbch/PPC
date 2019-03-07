@@ -4562,3 +4562,15 @@ Caused by: java.util.ConcurrentModificationException
 
 !ENTRY ilog.odms.ide.opllang 1 0 2019-03-06 17:44:10.332
 !MESSAGE concert_wrap.IloEndMT
+!SESSION 2019-03-07 13:28:27.878 -----------------------------------------------
+eclipse.buildId=Build 0
+java.fullversion=8.0.5.0 - pwa6480sr5-20170905_01(SR5)
+JRE 1.8.0 IBM J9 2.9 Windows 8 amd64-64 Compressed References 20170901_363591 (JIT enabled, AOT enabled)
+J9VM - d56eb84
+JIT  - tr.open_20170901_140853_d56eb84
+OMR  - b033a01
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -clean
+
+!ENTRY ilog.odms.ide.core 1 0 2019-03-07 13:29:43.802
+!MESSAGE ODM Bundle is OFF

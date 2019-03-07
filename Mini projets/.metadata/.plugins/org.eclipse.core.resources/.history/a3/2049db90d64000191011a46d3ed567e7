@@ -3,7 +3,7 @@
 <settings version="2">
   <category name="cp">
     <setting name="countinferencelevel" value="Extended"/>
-    <setting name="defaultinferencelevel" value="Extended"/>
     <setting name="alldiffinferencelevel" value="Extended"/>
+    <setting name="defaultinferencelevel" value="Extended"/>
   </category>
 </settings>
