@@ -42,7 +42,7 @@ look_ahead_strat = 2
 # 2 : FC+AC
 # 3 : FC + AC de temps en temps
 # --------------------- recherche dynamique ---------------------
-dynamic_search=True
+dynamic_search=False
 # change de branche et de stratégie automatiquement si le problème semble difficile
 # la recherche dynamique ne tient pas compte des paramètres ci-dessus
 
@@ -52,18 +52,18 @@ dynamic_search=True
 # --------------------- reines ---------------------
 
 t1 = time()
-I_Q = create_queens_instance(140)
-I_Q.compute_useful_objects()
-t2 = time()
-print("Temps de création : "+str(t2-t1))
-sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search)
-t3 = time()
-print("Temps de résolution : "+str(t3-t2))
+#I_Q = create_queens_instance(15)
+#I_Q.compute_useful_objects()
+#t2 = time()
+#print("Temps de création : "+str(t2-t1))
+#sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search)
+#t3 = time()
+#print("Temps de résolution : "+str(t3-t2))
 
-"""
+
 # --------------------- graphes ---------------------
 
-def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat):
+def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat, time_limit):
     
     t1 = time()
     I2 = create_graph_instance(filename)
@@ -71,14 +71,15 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 #    print("Clique max dans ce graphe (borne inf au nombre chromatique) : ",LB)
     I2.compute_useful_objects()
     t2 = time()
-    print("Temps de création : "+str(t2-t1))
+#    print("Temps de création : "+str(t2-t1))
     
     it = 1
     print("\n"+"Résolution numéro : "+str(it)+"\n")
-    sol, nb_col = solve(I2,branching_strat,var_strat,search_strat,look_ahead_strat)
+    sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I2,branching_strat,var_strat,
+                                                                     search_strat,look_ahead_strat,dynamic_search,time_limit)
     print("Nombre de couleurs utilisées : "+str(nb_col)+"\n")
     
-    while sol != [] and nb_col != LB:
+    while sol != [] and nb_col != LB and time()-t2<time_limit:
         bestsol=dcopy(sol.Domains)
         t1 = time()
         I = create_graph_instance(filename,nb_col-1)
@@ -87,7 +88,8 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
             I.compute_useful_objects()
             t2 = time()
             print("Temps de création : "+str(t2-t1))
-            sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
+            sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I,branching_strat,var_strat,
+                                                                     search_strat,look_ahead_strat,dynamic_search,time_limit)
             t3 = time()
             print("Nombre de couleurs utilisées : "+str(nb_col))
             #print_sol(sol, I)
@@ -96,8 +98,12 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
             t2 = time()
             print("Temps de création : "+str(t2-t1))
             print("Problème infaisable par clique max")
-
-    return bestsol
+        it += 1
+    
+    if time()-t2 >= time_limit:
+        return 0, 0
+    else:
+        return bestsol, time()-t2
 
 # ****************** résolution ******************
 #filename = "./graphes/jean.col" # solution exacte : 10
@@ -106,7 +112,7 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 filename = "./graphes/myciel5.col" # solution exacte : 6
 #filename = "./graphes/queen10_10.col" # solution exacte : 10
 #filename = "./graphes/miles1000.col" # solution exacte : 42
-coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
+#coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 
 
 
@@ -118,7 +124,7 @@ coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 #    I.compute_useful_objects()
 #    t2 = time()
 #    print("Temps de création : "+str(t2-t1))
-#    sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat)
+#    sol, nb_col = solve(I,branching_strat,var_strat,search_strat,look_ahead_strat, dynamic_search)
 #    t3 = time()
 #    print("Nombre de couleurs utilisées : "+str(nb_col))
 #    #print_sol(sol, I)
@@ -127,4 +133,3 @@ coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat)
 #    t2 = time()
 #    print("Temps de création : "+str(t2-t1))
 #    print("Problème infaisable par clique max")
-"""

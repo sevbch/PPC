@@ -5,6 +5,16 @@ Created on Wed Mar 06 16:57:38 2019
 @author: Guillaume
 """
 
+from Instance import Instance
+from Solving import solve, print_sol
+from Queens import create_queens_instance
+from time import time
+from Graph import create_graph_instance
+from Node import Node
+from copy import deepcopy as dcopy
+import pandas as pd
+
+
 RESULTS_LA1={}
 RESULTS_LA2={}
 RESULTS_LA1_Alea={}
@@ -14,12 +24,13 @@ RESULTS_LA2[0]=("Temps","Noeuds","Echecs","Temps BR","Temps AC","Temps FC")
 RESULTS_LA1_Alea[0]=("Temps","Noeuds","Echecs","Temps BR","Temps AC","Temps FC")
 RESULTS_DC[0]=("Temps","Noeuds","Echecs","Temps BR","Temps AC","Temps FC")
 
-for n in range(50,101):
+for n in range(6,10):
     
     branching_strat = 2
     var_strat = 1
     search_strat = 1
     look_ahead_strat = 1
+    dynamic_search=False
     t1 = time()
     
     I_Q = create_queens_instance(n)
@@ -36,6 +47,7 @@ for n in range(50,101):
     var_strat = 1
     search_strat = 1
     look_ahead_strat = 2
+    dynamic_search=False
     t2 = time()
     sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search)
     t3 = time()

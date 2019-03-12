@@ -55,7 +55,9 @@ def print_sol(solution,I):
         
 
 
-def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search):
+def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search, time_limit=100000000000):
+    
+    t_ini = time()
     
     if dynamic_search:
         branching_strat = 2
@@ -77,7 +79,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
     start=time()
     #print(root_node.Domains)
     
-    while nodes_list != [] and not found_feas:
+    while nodes_list != [] and not found_feas and time()-t_ini<time_limit:
         
         #print([node.ID for node in nodes_list])
         current_node = choose_node(nodes_list,search_strat,nchildren)
@@ -187,7 +189,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
             print("Temps passé sur le FC : "+str(fc_time)+"\n")
             print("Temps total écoulé : "+str(time()-start))
             
-            
+        
     if found_feas:
         #print_sol(solution,I)
         #print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
@@ -198,6 +200,9 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
         #print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return solution, nb_col(solution,I), nbr_nodes,nbr_fails,br_time,ac_time,fc_time
 
+    elif time()-t_ini >= time_limit:
+        print("Temps limite atteint")
+        return [], 0, 0, 0, 0, 0, 0
     
     else:
         print("***** Le problème est infaisable *****")
@@ -207,7 +212,9 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
         print("Temps passé à brancher seulement : "+str(br_time))
         print("Temps passé sur l'AC : "+str(ac_time))
         print("Temps passé sur le FC : "+str(fc_time)+"\n")
-        return [], 0
+        return [], 0, 0, 0, 0, 0, 0
+    
+    
 
 
 
