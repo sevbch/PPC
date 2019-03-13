@@ -52,7 +52,10 @@ def get_graph(filename):
             else: # ligne vide = fin du fichier
                 break
     f.closed
-    print("Il y a "+str(len(edges))+" arêtes dans le graphe")
+    edges2=list(set(edges))
+    if len(edges2)!=len(edges):
+        deg_max = deg_max/2
+    print("Il y a "+str(len(edges2))+" arêtes dans le graphe")
     g = Graph(n,deg_max,edges)
     return g, n
 
