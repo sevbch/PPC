@@ -50,8 +50,8 @@ def print_sol(solution,I):
     tab=np.zeros((I.N,I.N))
     for x in range(I.N):
         print("Variable "+str(x)+" affectée à la valeur "+str(solution.Domains[x][0]))
-        #tab[x][solution.Domains[x][0]-1]=1
-    #print(tab)
+        tab[x][solution.Domains[x][0]-1]=1
+    print(tab)
         
 
 
@@ -92,7 +92,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
         #print("My domain before AC",current_node.Domains)
         
         # *** stratégie look ahead ***
-        if nbr_nodes==0:
+        if nbr_nodes<0:
             b1=time()
             current_node.AC3(I)
             b2=time()
@@ -192,12 +192,12 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
         
     if found_feas:
         #print_sol(solution,I)
-        #print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-        #print("Il y a eu "+str(nbr_fails)+" échec(s)")
-        #print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-        #print("Temps passé à brancher seulement : "+str(br_time))
-        #print("Temps passé sur l'AC : "+str(ac_time))
-        #print("Temps passé sur le FC : "+str(fc_time)+"\n")
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)")
+        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+        print("Temps passé à brancher seulement : "+str(br_time))
+        print("Temps passé sur l'AC : "+str(ac_time))
+        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return solution, nb_col(solution,I), nbr_nodes,nbr_fails,br_time,ac_time,fc_time
 
     elif time()-t_ini >= time_limit:

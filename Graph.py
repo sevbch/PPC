@@ -38,6 +38,9 @@ def get_graph(filename):
                 else:
                     u = int(l[1])-1
                     v = int(l[2][:-1])-1
+                    if v<u:
+                        v = int(l[1])-1
+                        u = int(l[2][:-1])-1
                     if u < v:
                         edges.append((u,v))
                         deg[u] += 1
@@ -49,17 +52,21 @@ def get_graph(filename):
             else: # ligne vide = fin du fichier
                 break
     f.closed
+    print("Il y a "+str(len(edges))+" arêtes dans le graphe")
     g = Graph(n,deg_max,edges)
-    return g
+    return g, n
 
 
 
 def create_graph_instance(filename, colours=None):
-    g = get_graph(filename)
+    g, n = get_graph(filename)
     if colours==None:
+        max_col=g.deg_max+1
         var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
         print("Tentative de coloration avec au plus "+str(g.deg_max+1)+" couleurs \n")
     else:
+        max_col=colours
+        print("Tentative de coloration avec au plus "+str(max_col)+" couleurs \n")
         var_domains = [list(reversed(range(1, colours + 1))) for i in range(g.n)]
     constraints_list = []
     CL=find_max_clique(g.edges)
@@ -70,16 +77,31 @@ def create_graph_instance(filename, colours=None):
     print("Clique max détectée avec "+str(col-1)+" couleurs")
     if colours!=None and colours < col-1:
         return []
+    Uni = [[] for i in range(n)]
+    # Uni[x] est la liste des variables dont les contraintes touchent x
+    Cons_ID = [[-1 for i in range(j)] for j in range(n)]
+    # Cons_ID[x][y] renvoie l'ID de la contrainte C(x,y), et -1 sinon. On impose TOUJOURS x_ID>y_ID
+    Cons_Tuple = []
+    # Cons_Tuple[ID][val1][val2] renvoie True si la contrainte ID accepte le tuple (val1,val2)
     for e in g.edges:
-        tuple_list = []
         x = e[1]
         y = e[0]
+        Cons_Tuple.append([[False for d in range(max_col+1)] for z in range(max_col+1)])
+        Uni[x].append(y)
+        Uni[y].append(x)
+        count=0
         for x_value in var_domains[x]:
             for y_value in var_domains[y]:
                 if x_value != y_value:
-                    tuple_list.append((x_value,y_value))
-        constraints_list.append((x,y,tuple_list))
-    I = Instance(g.n,var_domains,constraints_list,col-1)
+                    Cons_Tuple[-1][x_value][y_value] = True
+                    count+=1
+        Cons_ID[x][y] = len(Cons_Tuple)-1
+        if count==len(var_domains[x])*len(var_domains[y]):
+            Uni[x].pop()
+            Uni[y].pop()
+            Cons_Tuple.pop()
+            Cons_ID[x][y]=-1
+    I = Instance(g.n,var_domains,constraints_list,col-1,Uni,Cons_ID,Cons_Tuple)
     return I
 
 def find_max_clique(edges):

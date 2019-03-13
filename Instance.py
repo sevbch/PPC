@@ -24,7 +24,8 @@ class Instance:
         self.Uni=Uni
         self.Cons_ID=Cons_ID
         self.Cons_Tuple=Cons_Tuple
-        
+     
+    """Obsolète    
     def compute_useful_objects(self):
         
         Uni = [[] for i in range(self.N)]
@@ -48,11 +49,11 @@ class Instance:
         self.Cons_ID = Cons_ID
         self.Cons_Tuple = Cons_Tuple
         self.Constraints=[] #libère la mémoire
-    
+    """
     def copy_instance(self):
         n = copy(self.N)
         var_domains = dcopy(self.Domains)
         constraints_list = dcopy(self.Constraints)
         return Instance(n,var_domains,constraints_list)
-            
+    
             
