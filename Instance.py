@@ -9,7 +9,7 @@ from copy import deepcopy as dcopy
 
 class Instance:
     
-    def __init__(self,nbr_var,var_domains,constraints_list,lower_bound=0):
+    def __init__(self,nbr_var,var_domains,constraints_list,lower_bound=0,Uni=None,Cons_ID=None,Cons_Tuple=None):
         self.N = nbr_var
         self.M = len(constraints_list)
         self.Domains = var_domains
@@ -18,8 +18,12 @@ class Instance:
             d = max(var_domains[i])
             if d > self.d_max:
                 self.d_max = d
-        self.Constraints = constraints_list
+        if Uni==None:
+            self.Constraints = constraints_list
         self.lb = lower_bound
+        self.Uni=Uni
+        self.Cons_ID=Cons_ID
+        self.Cons_Tuple=Cons_Tuple
         
     def compute_useful_objects(self):
         
@@ -39,9 +43,11 @@ class Instance:
             Cons_ID[x_ID][y_ID] = c
             for (val1,val2) in tuples:
                 Cons_Tuple[c][val1][val2] = True
+            self.Constraints[c]=[] #libère la mémoire
         self.Uni = Uni
         self.Cons_ID = Cons_ID
         self.Cons_Tuple = Cons_Tuple
+        self.Constraints=[] #libère la mémoire
     
     def copy_instance(self):
         n = copy(self.N)
