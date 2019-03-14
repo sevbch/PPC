@@ -38,7 +38,7 @@ def get_graph(filename):
                 else:
                     u = int(l[1])-1
                     v = int(l[2][:-1])-1
-                    if v<u:
+                    if v < u:
                         v = int(l[1])-1
                         u = int(l[2][:-1])-1
                     if u < v:
@@ -54,22 +54,23 @@ def get_graph(filename):
     f.closed
     edges2=list(set(edges))
     if len(edges2)!=len(edges):
-        deg_max = deg_max/2
-    print("Il y a "+str(len(edges2))+" arêtes dans le graphe")
+        deg_max = int(deg_max/2)
+#    print("Il y a "+str(len(edges2))+" arêtes dans le graphe")
     g = Graph(n,deg_max,edges)
-    return g, n
+    return g
 
 
 
 def create_graph_instance(filename, colours=None):
-    g, n = get_graph(filename)
+    g = get_graph(filename)
+    n = g.n
     if colours==None:
         max_col=g.deg_max+1
-        var_domains = [list(reversed(range(1, g.deg_max + 2))) for i in range(g.n)]
-        print("Tentative de coloration avec au plus "+str(g.deg_max+1)+" couleurs \n")
+        var_domains = [list(reversed(range(1, int(g.deg_max + 2)))) for i in range(g.n)]
+#        print("Tentative de coloration avec au plus "+str(g.deg_max+1)+" couleurs \n")
     else:
         max_col=colours
-        print("Tentative de coloration avec au plus "+str(max_col)+" couleurs \n")
+#        print("Tentative de coloration avec au plus "+str(max_col)+" couleurs \n")
         var_domains = [list(reversed(range(1, colours + 1))) for i in range(g.n)]
     constraints_list = []
     CL=find_max_clique(g.edges)
@@ -77,7 +78,7 @@ def create_graph_instance(filename, colours=None):
     for p in CL:
         var_domains[p]=[col]
         col+=1
-    print("Clique max détectée avec "+str(col-1)+" couleurs")
+#    print("Clique max détectée avec "+str(col-1)+" couleurs")
     if colours!=None and colours < col-1:
         return []
     Uni = [[] for i in range(n)]
@@ -89,7 +90,7 @@ def create_graph_instance(filename, colours=None):
     for e in g.edges:
         x = e[1]
         y = e[0]
-        Cons_Tuple.append([[False for d in range(max_col+1)] for z in range(max_col+1)])
+        Cons_Tuple.append([[False for d in range(int(max_col+1))] for z in range(int(max_col+1))])
         Uni[x].append(y)
         Uni[y].append(x)
         count=0

@@ -176,42 +176,42 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
             n=nodes_list.pop(0)
             nodes_list.append(n)
         
-        if nbr_nodes%100000==0:
-            print("Progress report")
-            print(nbr_nodes)
-            print("Noeuds en memoire "+str(len(nodes_list)))
-            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-            print("Il y a eu "+str(nbr_fails)+" échec(s)")
-            print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-            print("Temps passé à brancher seulement : "+str(br_time))
-            print("Temps passé à brancher seulement (br3) : "+str(br3_time))
-            print("Temps passé sur l'AC : "+str(ac_time))
-            print("Temps passé sur le FC : "+str(fc_time)+"\n")
-            print("Temps total écoulé : "+str(time()-start))
+#        if nbr_nodes%100000==0:
+#            print("Progress report")
+#            print(nbr_nodes)
+#            print("Noeuds en memoire "+str(len(nodes_list)))
+#            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+#            print("Il y a eu "+str(nbr_fails)+" échec(s)")
+#            print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+#            print("Temps passé à brancher seulement : "+str(br_time))
+#            print("Temps passé à brancher seulement (br3) : "+str(br3_time))
+#            print("Temps passé sur l'AC : "+str(ac_time))
+#            print("Temps passé sur le FC : "+str(fc_time)+"\n")
+#            print("Temps total écoulé : "+str(time()-start))
             
         
     if found_feas:
-        #print_sol(solution,I)
-        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-        print("Il y a eu "+str(nbr_fails)+" échec(s)")
-        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-        print("Temps passé à brancher seulement : "+str(br_time))
-        print("Temps passé sur l'AC : "+str(ac_time))
-        print("Temps passé sur le FC : "+str(fc_time)+"\n")
+#        print_sol(solution,I)
+#        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+#        print("Il y a eu "+str(nbr_fails)+" échec(s)")
+#        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+#        print("Temps passé à brancher seulement : "+str(br_time))
+#        print("Temps passé sur l'AC : "+str(ac_time))
+#        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return solution, nb_col(solution,I), nbr_nodes,nbr_fails,br_time,ac_time,fc_time
 
     elif time()-t_ini >= time_limit:
-        print("Temps limite atteint")
+#        print("Temps limite atteint")
         return [], 0, 0, 0, 0, 0, 0
     
     else:
-        print("***** Le problème est infaisable *****")
-        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-        print("Il y a eu "+str(nbr_fails)+" échec(s)")
-        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-        print("Temps passé à brancher seulement : "+str(br_time))
-        print("Temps passé sur l'AC : "+str(ac_time))
-        print("Temps passé sur le FC : "+str(fc_time)+"\n")
+#        print("***** Le problème est infaisable *****")
+#        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+#        print("Il y a eu "+str(nbr_fails)+" échec(s)")
+#        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+#        print("Temps passé à brancher seulement : "+str(br_time))
+#        print("Temps passé sur l'AC : "+str(ac_time))
+#        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return [], 0, 0, 0, 0, 0, 0
     
     

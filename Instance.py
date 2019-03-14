@@ -11,7 +11,7 @@ class Instance:
     
     def __init__(self,nbr_var,var_domains,constraints_list,lower_bound=0,Uni=None,Cons_ID=None,Cons_Tuple=None):
         self.N = nbr_var
-        self.M = len(constraints_list)
+        self.M = len(Cons_Tuple)
         self.Domains = var_domains
         self.d_max = 0
         for i in range(nbr_var):
@@ -20,6 +20,7 @@ class Instance:
                 self.d_max = d
         if Uni==None:
             self.Constraints = constraints_list
+            self.M = len(constraints_list)
         self.lb = lower_bound
         self.Uni=Uni
         self.Cons_ID=Cons_ID

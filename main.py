@@ -112,7 +112,7 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 #filename = "./graphes/myciel4.col" # solution exacte : 5
 #filename = "./graphes/myciel5.col" # solution exacte : 6
 #filename = "./graphes/queen10_10.col" # solution exacte : ?
-filename = "./graphes/miles1000.col" # solution exacte : 42
+#filename = "./graphes/miles1000.col" # solution exacte : 42
 #filename = "./graphes/DSJC125.9.col" # solution exacte : ?
 #filename = "./graphes/fpsol2.i.1.col" # solution exacte : 65
 #filename = "./graphes/queen14_14.col" # solution exacte : ?
@@ -122,18 +122,18 @@ filename = "./graphes/miles1000.col" # solution exacte : 42
 
 
 
-# vieille méthode pour checker
-t1 = time()
-I = create_graph_instance(filename)
-if I!=[]:
-    t2 = time()
-    print("Temps de création : "+str(t2-t1))
-    sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I, branching_strat, var_strat, search_strat, look_ahead_strat, dynamic_search)
-    t3 = time()
-    print("Nombre de couleurs utilisées : "+str(nb_col))
-    #print_sol(sol, I)
-    print("Temps de résolution : "+str(t3-t2))
-else:
-    t2 = time()
-    print("Temps de création : "+str(t2-t1))
-    print("Problème infaisable par clique max")
+## vieille méthode pour checker
+#t1 = time()
+#I = create_graph_instance(filename)
+#if I!=[]:
+#    t2 = time()
+#    print("Temps de création : "+str(t2-t1))
+#    sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I, branching_strat, var_strat, search_strat, look_ahead_strat, dynamic_search)
+#    t3 = time()
+#    print("Nombre de couleurs utilisées : "+str(nb_col))
+#    #print_sol(sol, I)
+#    print("Temps de résolution : "+str(t3-t2))
+#else:
+#    t2 = time()
+#    print("Temps de création : "+str(t2-t1))
+#    print("Problème infaisable par clique max")

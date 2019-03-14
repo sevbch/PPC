@@ -32,6 +32,7 @@ time_limit = 120
 directory = os.fsencode("./graphes/")
 it = 1
 
+
 for file in os.listdir(directory):
     
     filename = directory+file
@@ -39,7 +40,7 @@ for file in os.listdir(directory):
     
     t1 = time()
     I = create_graph_instance(filename)
-    I.compute_useful_objects()
+    print(I.Cons_Tuple)
     
     t2 = time()
     print("Temps de création : "+str(t2-t1))
