@@ -108,11 +108,12 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
 
 # ****************** résolution ******************
 #filename = "./graphes/jean.col" # solution exacte : 10
+filename = "./graphes/myciel2.col" # solution exacte : 4
 #filename = "./graphes/myciel3.col" # solution exacte : 4
 #filename = "./graphes/myciel4.col" # solution exacte : 5
 #filename = "./graphes/myciel5.col" # solution exacte : 6
 #filename = "./graphes/queen10_10.col" # solution exacte : ?
-filename = "./graphes/miles1000.col" # solution exacte : 42
+#filename = "./graphes/miles1000.col" # solution exacte : 42
 #filename = "./graphes/DSJC125.9.col" # solution exacte : ?
 #filename = "./graphes/fpsol2.i.1.col" # solution exacte : 65
 #filename = "./graphes/queen14_14.col" # solution exacte : ?
