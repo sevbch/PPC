@@ -9,6 +9,8 @@ from Node import Node
 from copy import copy
 import numpy as np
 from time import time
+from Graph import create_graph_instance
+from copy import deepcopy as dcopy
 np.random.seed(0)
 
 
@@ -76,7 +78,6 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
     ac_time=0
     fc_time=0
     br3_time=0
-    start=time()
     #print(root_node.Domains)
     
     while nodes_list != [] and not found_feas and time()-t_ini<time_limit:
@@ -218,3 +219,51 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
 
 
 
+def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search,time_limit_int,time_limit_tot):
+    
+    t_ini = time()
+    it = 1
+    time_it = []
+    print("\n"+"Résolution numéro : "+str(it))
+    I = create_graph_instance(filename)
+    print("Temps de création : "+str(time()-t_ini))
+    LB = I.lb
+    t2 = time()
+    sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I,branching_strat,var_strat,
+                                                                     search_strat,look_ahead_strat,dynamic_search,time_limit_int)
+    time_it.append(time()-t2)
+    print("Nombre de couleurs utilisées : "+str(nb_col))
+    bestcol = nb_col
+    col_it = []
+    col_it.append(nb_col)
+    
+    while sol != [] and nb_col != LB and time()-t_ini < time_limit_tot:
+        bestsol = dcopy(sol.Domains)
+        t1 = time()
+        I = create_graph_instance(filename,nb_col-1)
+        it += 1
+        if I!=[]:
+            t2 = time()
+            print("\n"+"Résolution numéro : "+str(it))
+            print("Temps de création : "+str(t2-t1))
+            sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I,branching_strat,var_strat,
+                                                                     search_strat,look_ahead_strat,dynamic_search,time_limit_int)
+            t3 = time()
+            time_it.append(t3-t2)            
+            print("Nombre de couleurs utilisées : "+str(nb_col))
+            #print_sol(sol, I)
+            print("Temps de résolution : "+str(t3-t2))        
+            col_it.append(nb_col)
+            if (nb_col > 0 and nb_col < bestcol):
+                bestcol = nb_col
+        else:
+            t2 = time()
+            print("Temps de création : "+str(t2-t1))
+            print("Problème infaisable par clique max")
+            
+    print("\n"+"Nombre de couleurs optimal : "+ str(bestcol));
+    
+    if time()-t_ini >= time_limit_tot or t3-t2 >= time_limit_int:
+        return 0, time()-t_ini, it, time_it, col_it
+    else:
+        return bestcol, time()-t_ini, it, time_it, col_it
