@@ -126,7 +126,7 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
                 b2=time()
                 fc_time+=b2-b1
                 
-                if len(current_node.ID)%2==0:
+                if len(current_node.ID)%30==0:
                     b1=time()
                     current_node.AC3(I)
                     b2=time()
@@ -177,28 +177,28 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
             n=nodes_list.pop(0)
             nodes_list.append(n)
         
-#        if nbr_nodes%100000==0:
-#            print("Progress report")
-#            print(nbr_nodes)
-#            print("Noeuds en memoire "+str(len(nodes_list)))
-#            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-#            print("Il y a eu "+str(nbr_fails)+" échec(s)")
-#            print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-#            print("Temps passé à brancher seulement : "+str(br_time))
-#            print("Temps passé à brancher seulement (br3) : "+str(br3_time))
-#            print("Temps passé sur l'AC : "+str(ac_time))
-#            print("Temps passé sur le FC : "+str(fc_time)+"\n")
-#            print("Temps total écoulé : "+str(time()-start))
+        if nbr_nodes%100000==0:
+            print("Progress report")
+            print(nbr_nodes)
+            print("Noeuds en memoire "+str(len(nodes_list)))
+            print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+            print("Il y a eu "+str(nbr_fails)+" échec(s)")
+            print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+            print("Temps passé à brancher seulement : "+str(br_time))
+            print("Temps passé à brancher seulement (br3) : "+str(br3_time))
+            print("Temps passé sur l'AC : "+str(ac_time))
+            print("Temps passé sur le FC : "+str(fc_time)+"\n")
+            print("Temps total écoulé : "+str(time()-start))
             
         
     if found_feas:
 #        print_sol(solution,I)
-#        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-#        print("Il y a eu "+str(nbr_fails)+" échec(s)")
-#        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-#        print("Temps passé à brancher seulement : "+str(br_time))
-#        print("Temps passé sur l'AC : "+str(ac_time))
-#        print("Temps passé sur le FC : "+str(fc_time)+"\n")
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)")
+        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+        print("Temps passé à brancher seulement : "+str(br_time))
+        print("Temps passé sur l'AC : "+str(ac_time))
+        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return solution, nb_col(solution,I), nbr_nodes,nbr_fails,br_time,ac_time,fc_time
 
     elif time()-t_ini >= time_limit:
@@ -206,13 +206,13 @@ def solve(I,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_sear
         return [], 0, 0, 0, 0, 0, 0
     
     else:
-#        print("***** Le problème est infaisable *****")
-#        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
-#        print("Il y a eu "+str(nbr_fails)+" échec(s)")
-#        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
-#        print("Temps passé à brancher seulement : "+str(br_time))
-#        print("Temps passé sur l'AC : "+str(ac_time))
-#        print("Temps passé sur le FC : "+str(fc_time)+"\n")
+        print("***** Le problème est infaisable *****")
+        print("Il y a eu "+str(nbr_nodes)+" noeud(s) exploré(s)")
+        print("Il y a eu "+str(nbr_fails)+" échec(s)")
+        print("Le FC a enlevé "+str(count_FC)+" fois des variables")
+        print("Temps passé à brancher seulement : "+str(br_time))
+        print("Temps passé sur l'AC : "+str(ac_time))
+        print("Temps passé sur le FC : "+str(fc_time)+"\n")
         return [], 0, 0, 0, 0, 0, 0
     
     
@@ -224,6 +224,7 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
     t_ini = time()
     it = 1
     time_it = []
+    nb_nodes_it=[]
     print("\n"+"Résolution numéro : "+str(it))
     I = create_graph_instance(filename)
     print("Temps de création : "+str(time()-t_ini))
@@ -231,11 +232,14 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
     t2 = time()
     sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I,branching_strat,var_strat,
                                                                      search_strat,look_ahead_strat,dynamic_search,time_limit_int)
-    time_it.append(time()-t2)
-    print("Nombre de couleurs utilisées : "+str(nb_col))
+    t3 = time()
+    time_it.append(t3-t2)
+    print("Nombre de couleurs utilisées : "+str(nb_col))        
+    print("Nombre de noeuds : "+str(nbr_nodes))
     bestcol = nb_col
     col_it = []
     col_it.append(nb_col)
+    nb_nodes_it.append(nbr_nodes)
     
     while sol != [] and nb_col != LB and time()-t_ini < time_limit_tot:
         bestsol = dcopy(sol.Domains)
@@ -251,19 +255,38 @@ def coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_st
             t3 = time()
             time_it.append(t3-t2)            
             print("Nombre de couleurs utilisées : "+str(nb_col))
+            print("Nombre de noeuds : "+str(nbr_nodes))
             #print_sol(sol, I)
             print("Temps de résolution : "+str(t3-t2))        
             col_it.append(nb_col)
+            nb_nodes_it.append(nbr_nodes)
             if (nb_col > 0 and nb_col < bestcol):
                 bestcol = nb_col
-        else:
+        else:   
             t2 = time()
             print("Temps de création : "+str(t2-t1))
             print("Problème infaisable par clique max")
             
-    print("\n"+"Nombre de couleurs optimal : "+ str(bestcol));
+    print("\n"+"Nombre de couleurs optimal : "+ str(bestcol))
     
     if time()-t_ini >= time_limit_tot or t3-t2 >= time_limit_int:
-        return 0, time()-t_ini, it, time_it, col_it
+        return 0, time()-t_ini, it, time_it, col_it, nb_nodes_it
     else:
-        return bestcol, time()-t_ini, it, time_it, col_it
+        return bestcol, time()-t_ini, it, time_it, col_it, nb_nodes_it
+    
+    
+def sat_graph(filename,nb_col_max,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search,time_limit=10000000):
+    t1 = time()
+    I = create_graph_instance(filename, nb_col_max)
+    if I!=[]:
+        t2 = time()
+        print("Temps de création : "+str(t2-t1))
+        sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I, branching_strat, var_strat, search_strat, look_ahead_strat, dynamic_search, time_limit)
+        t3 = time()
+        print("Nombre de couleurs utilisées : "+str(nb_col))
+        print("Temps de résolution : "+str(t3-t2))
+    else:
+        t2 = time()
+        print("Temps de création : "+str(t2-t1))
+        print("Problème infaisable par clique max")
+    return 0
