@@ -8,7 +8,6 @@ Created on Sat Feb 09 15:46:37 2019
 from Solving import solve, print_sol, coloring_graph, sat_graph
 from Queens import create_queens_instance
 from time import time
-from Graph import create_graph_instance
 
 
 # ****************** PARAMETRES DE RESOLUTION ******************
@@ -42,9 +41,6 @@ look_ahead_strat = 3
 dynamic_search = False
 # change de branche et de stratégie automatiquement si le problème semble difficile
 # la recherche dynamique ne tient pas compte des paramètres ci-dessus
-# --------------------- Temps limite de résolution ---------------------
-time_limit_int = 600 # temps limite pour une résolution lors d'une itération de coloring_graph
-time_limit_tot = 1200 # temps limite total de coloring_graph
 
 
 # ****************** INSTANCE & RESOLUTION ******************
@@ -53,7 +49,7 @@ time_limit_tot = 1200 # temps limite total de coloring_graph
 # --- paramètres : on active la recherche dynamique
 dynamic_search = True
 t1 = time()
-I_Q = create_queens_instance(10)
+I_Q = create_queens_instance(10) # taille de la grille en paramètre
 t2 = time()
 print("Temps de création : "+str(t2-t1))
 sol, nb_col, nbr_nodes,nbr_fails,br_time,ac_time,fc_time = solve(I_Q,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search)
@@ -74,18 +70,23 @@ filename = "./graphes/myciel3.col" # solution exacte : 4
 #filename = "./graphes/fpsol2.i.1.col" # solution exacte : 65
 #filename = "./graphes/queen14_14.col" # solution exacte : ?
 
+
 # --- paramètres : stratégie FC + AC de temps en temps
 branching_strat = 2
 var_strat = 1
 search_strat = 1
 look_ahead_strat = 3
 dynamic_search=False
+time_limit_int = 600 # temps limite pour une résolution lors d'une itération de coloring_graph
+time_limit_tot = 1200 # temps limite total de coloring_graph
 
 # --- minimisation du nombre de couleurs utilisées
 col, time_tot, nbr_it, time_it, col_it, nb_nodes_it = coloring_graph(filename,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search,time_limit_int,time_limit_tot)
 print("Temps de résolution total : "+str(time_tot))
 
+
 # --- faisabilité uniquement
+dynamic_search = True
 nb_col_max = 6 # nombre maximal de couleurs autorisées
 time_limit = 120 # temps limite
 sat_graph(filename,nb_col_max,branching_strat,var_strat,search_strat,look_ahead_strat,dynamic_search,time_limit)
