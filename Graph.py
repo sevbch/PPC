@@ -78,7 +78,7 @@ def create_graph_instance(filename, colours=None):
     for p in CL:
         var_domains[p]=[col]
         col+=1
-#    print("Clique max détectée avec "+str(col-1)+" couleurs")
+    print("Clique max détectée avec "+str(col-1)+" couleurs")
     if colours!=None and colours < col-1:
         return []
     Uni = [[] for i in range(n)]
