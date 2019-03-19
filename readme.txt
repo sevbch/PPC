@@ -16,3 +16,8 @@
  *** Queens.py : création d'une instance pour le problème de N-reines
  
  *** Graph.py : création d'une instance pour la coloration
+ 
+ 
+ 
+ 
+ *** N-reines.xlsx et Graphes.xlsx : résultats expérimentaux
