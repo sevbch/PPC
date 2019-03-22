@@ -41,14 +41,6 @@
 			<ref name="Tournoi_echecs_3.ops" type="setting">
 			</ref>
 		</config>
-		<config default="false" name="01" category="opl">
-			<ref name="01.mod" type="model">
-			</ref>
-			<ref name="Tournoi echecs.dat" type="data">
-			</ref>
-			<ref name="Tournoi echecs.ops" type="setting">
-			</ref>
-		</config>
 	</configs>
 	
 </project>
