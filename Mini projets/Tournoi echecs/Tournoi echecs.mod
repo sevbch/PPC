@@ -46,44 +46,8 @@ range Cases=0..(T*(N-1)-1);
 			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi(tab[m] div T == (jour-1))==1;		
 		}	
 	}
-	/*
-	forall(m1 in Matchs){
-		forall(m2 in Matchs){
-			if(m1!=m2){		
-				m1.J1 == m2.J1 => tab[m1] div T != tab[m2] div T;
-				m1.J1 == m2.J2 => tab[m1] div T != tab[m2] div T;
-				m1.J2 == m2.J1 => tab[m1] div T != tab[m2] div T;
-				m1.J2 == m2.J2 => tab[m1] div T != tab[m2] div T;
-			}		
-		}
-	}	
-	*/
-	// Tous les joueurs jouent 2 fois au plus par période
-	/*
-	forall(j in Joueurs){
-		forall(m1 in Matchs){
-			forall(m2 in Matchs){
-				forall(m3 in Matchs){		
-					if(m1!=m2 && m2!=m3 && m1!=m3){		
-						if(m1.J1 == j || m1.J2==j){
-							if(m2.J1 == j || m2.J2==j){
-								if(m3.J1 == j || m3.J2==j){
-									(tab[m1] % T != tab[m2] % T) ||
-									(tab[m2] % T != tab[m3] % T);
-       				}}}}									
-	  								
-				}		
-			}
-		}
-	
-	}
-	
-	forall(j in Joueurs){
-		forall(p in Periodes){
-			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi((tab[m] % T) == p-1)<=2;		
-		}	
-	}		
-	*/
+
+	// Tous les joueurs jouent 2 fois par période
 	forall(j in Joueurs){
 		forall(p in Periodes){
 			sum(m in Matchs : (m.J1==j || m.J2==j)) ftoi(tab[m] % T == p-1)==2-ftoi(Factice[j]==p);		
